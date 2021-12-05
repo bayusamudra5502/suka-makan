@@ -1,0 +1,30 @@
+.search-bar {
+  padding: 0;
+  border: 2px solid black;
+  max-width: 450px;
+  display: flex;
+  width: 100%;
+  border-radius: 10px;
+
+  input {
+    border-radius: 10px;
+    flex: 1;
+    border: 0;
+    background-color: white;
+    outline: 0;
+    padding: 10px;
+  }
+
+  button {
+    border-radius: 10px;
+    background-color: white;
+    border: 0;
+    padding: 5px;
+    cursor: pointer;
+  }
+
+  &:focus-within {
+    border: 2px solid #219ebc;
+    box-shadow: 0 0 0 0.2rem #8ecae6b6;
+  }
+}

@@ -1,0 +1,51 @@
+.result {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+}
+
+.card {
+  background-color: #fff;
+
+  img.banner {
+    width: 100%;
+  }
+
+  box-shadow: 3px 4px 10px rgba(143, 143, 143, 0.25);
+  border-radius: 10px;
+
+  .content {
+    padding: 10px 20px;
+    display: grid;
+    grid-template-columns: repeat(10, 1fr);
+    gap: 5px;
+    align-items: center;
+
+    h3 {
+      grid-column: 1/-2;
+    }
+
+    & > img {
+      grid-column: 1 / span 1;
+    }
+
+    & > img + p {
+      grid-column: 2 / -1;
+      margin: 5px;
+    }
+
+    .description {
+      grid-column: 1/-1;
+    }
+
+    .detail {
+      grid-column: -5/-1;
+    }
+    margin: 15px 0;
+  }
+
+  .bookmark {
+    border: 0;
+    background-color: transparent;
+    cursor: pointer;
+  }
+}
