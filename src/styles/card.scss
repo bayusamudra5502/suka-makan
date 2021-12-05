@@ -1,11 +1,13 @@
 .result {
   margin: 30px 10px;
   display: grid;
+  gap: 20px;
   grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
 }
 
 .card {
   background-color: #fff;
+  overflow: hidden;
 
   img.banner {
     width: 100%;
@@ -37,6 +39,7 @@
 
     .description {
       grid-column: 1/-1;
+      text-align: justify;
     }
 
     .detail {
