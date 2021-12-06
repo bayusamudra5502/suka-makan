@@ -19,7 +19,12 @@
     <header>
         <img class="logo" src="./images/icon/icon.png" alt="Logo Suka Makan">
         <h1>Suka Makan</h1>
-        <ul class="navigation">
+        <ul class="navigation" id="navigation">
+            <li class="close-button">
+                <button aria-label="Tutup Drawer">
+                    <img src="./images/assets/x.svg" alt="">
+                </button>
+            </li>
             <li>
                 <a href="/">Home</a>
             </li>
@@ -28,6 +33,9 @@
             </li>
             <li>
                 <a href="https://github.com/bayusamudra5502">Tentang Kami</a>
+            </li>
+            <li class="skip">
+                <a href="#navigation">Kembali ke Navigasi</a>
             </li>
         </ul>
         <button class="burger" aria-label="Buka Laci Navigasi">
@@ -44,125 +52,19 @@
     </section>
     <main>
         <h2>Daftar Restoran</h2>
-        <section id="search" class="search-bar">
-            <input name="keyword" placeholder="Cari Restoran">
-            <button aria-label="Memulai Pencarian">
-                <img src="./images/assets/search.svg" alt="">
-            </button>
+        <section id="search" class="search-container">
+            <form class="search-bar">
+                <input name="keyword" placeholder="Cari Restoran">
+                <button aria-label="Memulai Pencarian">
+                    <img src="./images/assets/search.svg" alt="">
+                </button>
+            </form>
         </section>
         <section class="result">
-            <div class="card">
-                <img class="banner" src="https://restaurant-api.dicoding.dev/images/medium/07" alt="Gambar Restoran">
-                <div class="content">
-                    <h3>Nama Restoran</h3>
-                    <button class="bookmark" aria-label="Simpan sebagai bookmark" title="Tambahkan Bookmark">
-                        <img src="./images/assets/bookmark.png" alt="Bookmark">
-                    </button>
-
-                    <!-- Lokasi -->
-                    <img src="./images/assets/pin.png" alt="Lokasi">
-                    <p>Kota Bandung</p>
-
-                    <!-- Rating -->
-                    <img src="./images/assets/star.png" alt="Bintang Reputasi">
-                    <p>4.5</p>
-
-                    <p aria-label="Deskripsi Restoran" class="description">
-                        Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor.
-                        Aenean
-                        massa. Cum sociis natoque penatibus et
-                    </p>
-
-                    <button class="btn detail">
-                        Lihat Detail
-                    </button>
-                </div>
-            </div>
-            <div class="card">
-                <img class="banner" src="https://restaurant-api.dicoding.dev/images/medium/07" alt="Gambar Restoran">
-                <div class="content">
-                    <h3>Nama Restoran</h3>
-                    <button class="bookmark" aria-label="Simpan sebagai bookmark" title="Tambahkan Bookmark">
-                        <img src="./images/assets/bookmark.png" alt="Bookmark">
-                    </button>
-
-                    <!-- Lokasi -->
-                    <img src="./images/assets/pin.png" alt="Lokasi">
-                    <p>Kota Bandung</p>
-
-                    <!-- Rating -->
-                    <img src="./images/assets/star.png" alt="Bintang Reputasi">
-                    <p>4.5</p>
-
-                    <p aria-label="Deskripsi Restoran" class="description">
-                        Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor.
-                        Aenean
-                        massa. Cum sociis natoque penatibus et
-                    </p>
-
-                    <button class="btn detail">
-                        Lihat Detail
-                    </button>
-                </div>
-            </div>
-            <div class="card">
-                <img class="banner" src="https://restaurant-api.dicoding.dev/images/medium/07" alt="Gambar Restoran">
-                <div class="content">
-                    <h3>Nama Restoran</h3>
-                    <button class="bookmark" aria-label="Simpan sebagai bookmark" title="Tambahkan Bookmark">
-                        <img src="./images/assets/bookmark.png" alt="Bookmark">
-                    </button>
-
-                    <!-- Lokasi -->
-                    <img src="./images/assets/pin.png" alt="Lokasi">
-                    <p>Kota Bandung</p>
-
-                    <!-- Rating -->
-                    <img src="./images/assets/star.png" alt="Bintang Reputasi">
-                    <p>4.5</p>
-
-                    <p aria-label="Deskripsi Restoran" class="description">
-                        Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor.
-                        Aenean
-                        massa. Cum sociis natoque penatibus et
-                    </p>
-
-                    <button class="btn detail">
-                        Lihat Detail
-                    </button>
-                </div>
-            </div>
-            <div class="card">
-                <img class="banner" src="https://restaurant-api.dicoding.dev/images/medium/07" alt="Gambar Restoran">
-                <div class="content">
-                    <h3>Nama Restoran</h3>
-                    <button class="bookmark" aria-label="Simpan sebagai bookmark" title="Tambahkan Bookmark">
-                        <img src="./images/assets/bookmark.png" alt="Bookmark">
-                    </button>
-
-                    <!-- Lokasi -->
-                    <img src="./images/assets/pin.png" alt="Lokasi">
-                    <p>Kota Bandung</p>
-
-                    <!-- Rating -->
-                    <img src="./images/assets/star.png" alt="Bintang Reputasi">
-                    <p>4.5</p>
-
-                    <p aria-label="Deskripsi Restoran" class="description">
-                        Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor.
-                        Aenean
-                        massa. Cum sociis natoque penatibus et
-                    </p>
-
-                    <button class="btn detail">
-                        Lihat Detail
-                    </button>
-                </div>
-            </div>
         </section>
     </main>
-    <footer>Copyright Suka Makan © 2020</footer>
-    <div class="overlay hide"></div>
+    <footer>Copyright Suka Makan © 2021</footer>
+    <div class="overlay box-overlay hide"></div>
 </body>
 
 </html>

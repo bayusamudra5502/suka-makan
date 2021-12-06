@@ -29,24 +29,76 @@ header {
 .navigation {
   display: none;
   gap: 15px;
-
-  li {
-    list-style: none;
-  }
+  position: fixed;
+  min-height: 100vh;
+  top: 0;
+  right: 0;
+  width: 60%;
+  background-color: white;
+  z-index: 100;
+  margin: 0;
+  list-style: none;
+  padding: 30px 20px;
+  align-items: stretch;
+  flex-direction: column;
 
   a {
+    padding: 10px;
     color: black;
     text-decoration: none;
+    width: 100%;
+    display: block;
   }
 
   a:hover {
     font-weight: bold;
   }
+
+  .close-button button {
+    background-color: transparent;
+    border: 0;
+    cursor: pointer;
+  }
+
+  .skip {
+    position: relative;
+    background-color: transparent;
+    padding: 0;
+    top: 0;
+    left: -100vw;
+  }
+
+  .skip:focus-within {
+    position: static;
+  }
 }
 
-@media screen and (min-width: 500px) {
+.show-drawer {
+  display: flex;
+  height: 100%;
+}
+
+@media screen and (min-width: 550px) {
   .navigation {
     display: flex;
+    position: static;
+    min-height: fit-content;
+    width: fit-content;
+    background-color: transparent;
+    padding: 0;
+    flex-direction: row;
+
+    a {
+      padding: 0;
+    }
+  }
+
+  .close-button {
+    display: none;
+  }
+
+  .skip {
+    display: none;
   }
 
   .burger {
