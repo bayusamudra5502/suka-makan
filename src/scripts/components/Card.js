@@ -28,15 +28,15 @@ export default class RestaurantCard extends Component {
         <div class="content">
             <h3>${this.__data.name}</h3>
             <button class="bookmark" aria-label="Simpan sebagai bookmark" title="Tambahkan Bookmark">
-                <img src="./images/assets/bookmark.png" alt="Bookmark">
+                <img src="./images/assets/bookmark.png" alt="Simpan Bookmark">
             </button>
 
             <!-- Lokasi -->
-            <img src="./images/assets/pin.png" alt="Lokasi">
+            <img src="./images/assets/pin.png" alt="Lokasi Restoran">
             <p>${this.__data.city}</p>
 
             <!-- Rating -->
-            <img src="./images/assets/star.png" alt="Bintang Reputasi">
+            <img src="./images/assets/star.png" alt="Rating Restoran">
             <p>${this.__data.rating}</p>
 
             <p class="description">
