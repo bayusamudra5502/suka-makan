@@ -23,6 +23,8 @@ function reloadSection(data) {
     result.appendChild(notFound);
     result.classList.add("not-found");
   }
+
+  window.location.assign("#result");
 }
 
 export function searchRestaurant(keyword) {

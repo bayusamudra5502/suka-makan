@@ -28,7 +28,7 @@ header {
 
 .navigation {
   display: none;
-  gap: 15px;
+  gap: 10px;
   position: fixed;
   min-height: 100vh;
   top: 0;
@@ -43,7 +43,7 @@ header {
   flex-direction: column;
 
   a {
-    padding: 10px;
+    padding: 15px 10px;
     color: black;
     text-decoration: none;
     width: 100%;
@@ -58,6 +58,7 @@ header {
     background-color: transparent;
     border: 0;
     cursor: pointer;
+    padding: 10px;
   }
 
   .skip {
@@ -89,15 +90,15 @@ header {
     flex-direction: row;
 
     a {
-      padding: 0;
+      padding: 15px;
+    }
+
+    .skip {
+      display: none;
     }
   }
 
   .close-button {
-    display: none;
-  }
-
-  .skip {
     display: none;
   }
 

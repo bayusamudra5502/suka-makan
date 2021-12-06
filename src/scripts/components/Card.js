@@ -39,7 +39,7 @@ export default class RestaurantCard extends Component {
             <img src="./images/assets/star.png" alt="Bintang Reputasi">
             <p>${this.__data.rating}</p>
 
-            <p aria-label="Deskripsi Restoran" class="description">
+            <p class="description">
               ${message}
             </p>
 

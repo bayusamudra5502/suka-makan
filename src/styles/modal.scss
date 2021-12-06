@@ -12,6 +12,7 @@ resto-modal {
   box-sizing: border-box;
   display: grid;
   align-items: center;
+  column-gap: 10px;
 
   grid-template-columns: repeat(12, 1fr);
 
@@ -41,6 +42,7 @@ resto-modal {
 
   .description {
     grid-column: 1/-1;
+    line-height: 1.4;
   }
 
   button {

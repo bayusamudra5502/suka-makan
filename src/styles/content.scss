@@ -1,6 +1,4 @@
 main {
-  padding: 10px;
-
   h2 {
     text-align: center;
   }
@@ -10,8 +8,13 @@ main {
   align-items: center;
 }
 
+.search-container {
+  padding: 10px;
+}
+
 .result {
   margin: 30px 10px;
+  padding: 10px;
   display: grid;
   gap: 20px;
   max-width: 1000px;

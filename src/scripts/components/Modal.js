@@ -45,7 +45,7 @@ export default class RestaurantModal extends Component {
       <p>${this.__data.rating}</p>
 
       <h4>Deskripsi</h4>
-      <p aria-label="Deskripsi Restoran" class="description">
+      <p class="description">
         ${this.__data.description}
       </p>
     `;
