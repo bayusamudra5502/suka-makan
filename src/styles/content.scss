@@ -1,4 +1,8 @@
 main {
+  & > *{
+    width: 100%;
+  }
+  
   h2 {
     text-align: center;
   }
@@ -10,6 +14,12 @@ main {
 
 .search-container {
   padding: 10px;
+}
+
+resto-list{
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .result {

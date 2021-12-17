@@ -1,41 +1,45 @@
-import Component from './Component';
+import bookmarkImage from '@img/assets/bookmark.png';
+import pinImage from '@img/assets/pin.png';
+import starImage from '@img/assets/star.png';
+import Component from '../lib/Component';
 
 const MAX_CHAR = 300;
 
 export default class RestaurantCard extends Component {
-  #data;
-
   set data(newData) {
-    this.#data = newData;
-    this.render();
+    this.props = { data: newData };
   }
 
   get data() {
-    return this.#data;
+    return this.props?.data ?? null;
   }
 
-  render() {
+  async render() {
+    if (this.data === null) {
+      return;
+    }
+
     const message = this.data.description.length > MAX_CHAR
       ? `${this.data.description.slice(0, MAX_CHAR - 3)}...`
       : this.data.description;
 
     this.innerHTML = `
     <div class="card">
-        <img class="banner" src="${this.data.pictureId}" alt="">
+        <img class="banner" src="${encodeURI(this.data.pictureId)}" alt="">
         <div class="content">
-            <h3>${this.data.name}</h3>
+            <h3></h3>
             <button class="bookmark" 
               aria-label="Simpan sebagai bookmark" title="Tambahkan Bookmark">
-                <img src="./images/assets/bookmark.png" alt="Simpan Bookmark">
+                <img src="${bookmarkImage}" alt="Simpan Bookmark">
             </button>
 
             <!-- Lokasi -->
-            <img src="./images/assets/pin.png" alt="Lokasi Restoran">
-            <p>${this.data.city}</p>
+            <img src="${pinImage}" alt="Lokasi Restoran">
+            <p class="resto-location"></p>
 
             <!-- Rating -->
-            <img src="./images/assets/star.png" alt="Rating Restoran">
-            <p>${this.data.rating}</p>
+            <img src="${starImage}" alt="Rating Restoran">
+            <p class="resto-rating"></p>
 
             <p class="description">
               ${message}
@@ -46,8 +50,11 @@ export default class RestaurantCard extends Component {
             </button>
         </div>
     </div>
-
     `;
+
+    this.setElementValue('h3', this.data.name);
+    this.setElementValue('.resto-location', this.data.city);
+    this.setElementValue('.resto-rating', this.data.rating);
   }
 }
 

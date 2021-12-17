@@ -6,9 +6,12 @@ module.exports = merge(common, {
   mode: 'production',
   plugins: [
     new MiniCSSExtractPlugin({
-      filename: 'assets/css/[name].[hash].css',
+      filename: 'static/css/[name].[fullhash].css',
     }),
   ],
+  output: {
+    clean: true,
+  },
   module: {
     rules: [
       {
