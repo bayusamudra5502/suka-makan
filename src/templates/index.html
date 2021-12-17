@@ -14,16 +14,16 @@
         Lewati ke konten
     </a>
     <header>
-        <img class="logo" src="./images/icon/icon.png" alt="Logo Suka Makan">
+        <img class="logo" src="<%= require('../assets/images/icon/icon.png').default %>" alt="Logo Suka Makan">
         <h1>Suka Makan</h1>
         <button class="burger" aria-label="Buka Laci Navigasi">
-            <img src="./images/assets/burger.png" alt="">
+            <img src="<%= require('../assets/images/assets/burger.png').default %>" alt="">
         </button>
         <nav>
             <ul class="navigation" id="navigation">
                 <li class="close-button">
                     <button aria-label="Tutup Drawer">
-                        <img src="./images/assets/x.svg" alt="x">
+                        <img src="<%= require('../assets/images/assets/x.svg').default %>" alt="x">
                     </button>
                 </li>
                 <li>
@@ -47,7 +47,7 @@
                 <p class="jumbo">Cari dan temukan</p>
                 <p>Restoran yang paling cocok bagi anda</p>
             </div>
-            <img src="./images/heros/hero-image.jpg" alt="">
+            <img src="<%= require('../assets/images/heros/hero-image.jpg').default %>" alt="">
             <div class="overlay"></div>
         </section>
         <h2>Daftar Restoran</h2>
@@ -55,7 +55,7 @@
             <form class="search-bar">
                 <input name="keyword" placeholder="Cari Restoran">
                 <button aria-label="Memulai Pencarian">
-                    <img src="./images/assets/search.svg" alt="Cari">
+                    <img src="<%= require('../assets/images/assets/search.svg').default %>" alt="Cari">
                 </button>
             </form>
         </section>

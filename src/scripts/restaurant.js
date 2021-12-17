@@ -1,14 +1,10 @@
-import RestaurantCard from "./components/Card";
-import db from "../DATA.json";
-
-export function loadRestaurant() {
-  reloadSection(db.restaurants);
-}
+import RestaurantCard from './components/Card';
+import db from '../DATA.json';
 
 function reloadSection(data) {
-  const result = document.querySelector("section.result");
-  result.innerHTML = "";
-  result.classList.remove("not-found");
+  const result = document.querySelector('section.result');
+  result.innerHTML = '';
+  result.classList.remove('not-found');
 
   if (data.length > 0) {
     data.forEach((record) => {
@@ -18,19 +14,21 @@ function reloadSection(data) {
       result.appendChild(card);
     });
   } else {
-    const notFound = document.createElement("p");
-    notFound.innerHTML = "Nama restoran tidak ditemukan :(";
+    const notFound = document.createElement('p');
+    notFound.innerHTML = 'Nama restoran tidak ditemukan :(';
     result.appendChild(notFound);
-    result.classList.add("not-found");
+    result.classList.add('not-found');
   }
 }
 
+export function loadRestaurant() {
+  reloadSection(db.restaurants);
+}
 export function searchRestaurant(keyword) {
-  const data = db.restaurants.filter(({ name }) => {
-    return name.toLowerCase().includes(keyword.toLowerCase());
-  });
+  const data = db.restaurants
+    .filter(({ name }) => name.toLowerCase().includes(keyword.toLowerCase()));
 
   reloadSection(data);
 
-  window.location.assign("#result");
+  window.location.assign('#result');
 }
