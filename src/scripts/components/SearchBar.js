@@ -2,6 +2,16 @@ import searchIcon from '@img/assets/search.svg';
 import Component from '../lib/Component';
 
 export default class SearchBar extends Component {
+  #submitHandler = () => { };
+
+  set onsearch(handler) {
+    this.#submitHandler = handler;
+  }
+
+  get onsearch() {
+    return this.#submitHandler;
+  }
+
   async render() {
     this.innerHTML = `
       <section id="search" class="search-container">      
@@ -13,6 +23,15 @@ export default class SearchBar extends Component {
         </form>
       </section>
     `;
+
+    this.#applyhandler();
+  }
+
+  #applyhandler() {
+    this.querySelector('form').onsubmit = (e) => {
+      e.preventDefault();
+      this.#submitHandler(e.target[0].value);
+    };
   }
 }
 

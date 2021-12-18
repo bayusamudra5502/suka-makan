@@ -1,0 +1,8 @@
+{
+  "endpoint": "https://restaurant-api.dicoding.dev",
+  "indexedDB": {
+    "name": "favorite-db",
+    "favoriteStore": "favorites",
+    "version": 1 
+  }
+}

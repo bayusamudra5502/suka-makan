@@ -1,6 +1,7 @@
 import iconApp from '@img/icon/icon.png';
 import burgerIcon from '@img/assets/burger.png';
 import xIcon from '@img/assets/x.svg';
+import searchIcon from '@img/assets/search.svg';
 import Component from '../lib/Component';
 
 export default class HeaderApp extends Component {
@@ -37,6 +38,11 @@ export default class HeaderApp extends Component {
                 </li>
                 <li>
                     <a href="https://github.com/bayusamudra5502">Tentang Kami</a>
+                </li>
+                <li>
+                  <a href="#/search">
+                    <img src="${searchIcon}" alt="Pencarian">
+                  </a>
                 </li>
                 <li class="skip">
                     <a href="#navigation">Kembali ke Navigasi</a>

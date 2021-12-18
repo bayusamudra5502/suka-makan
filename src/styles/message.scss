@@ -1,0 +1,23 @@
+.message-box {
+  display: flex;
+  max-width: 1000px;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.35em;
+  flex-direction: column;
+  padding: 20px;
+  text-align: center;
+  margin: 20px 0;
+
+  p {
+    margin-bottom: 0;
+  }
+
+  p.message-title{
+    font-weight: bold;
+  }
+
+  img{
+    max-width: 200px;
+  }
+}

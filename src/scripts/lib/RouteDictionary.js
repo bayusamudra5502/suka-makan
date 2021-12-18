@@ -30,11 +30,11 @@ export default class RouteDictionary {
       const resultPage = routeToken.reduce((lastPageObject, token, idx) => {
         if (token === currentToken[idx]) {
           return lastPageObject;
-        } if (token[0] === ':') {
+        } if (currentToken[idx][0] === ':') {
           return {
             ...lastPageObject,
             data: {
-              [token[0].slice(1)]: currentToken[idx],
+              [currentToken[idx].slice(1)]: token,
             },
           };
         }

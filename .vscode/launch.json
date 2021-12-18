@@ -11,6 +11,7 @@
       "url": "http://localhost:8080",
       "webRoot": "${workspaceFolder}/src",
       "sourceMaps": true,
+      "runtimeExecutable": "/usr/bin/google-chrome",
       "runtimeArgs": [
         "--new-window",
         "--remote-debugging-port=9222",

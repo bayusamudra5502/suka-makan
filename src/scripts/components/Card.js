@@ -1,4 +1,5 @@
-import bookmarkImage from '@img/assets/bookmark.png';
+import unlovedImage from '@img/assets/unlove.png';
+import lovedImage from '@img/assets/love.png';
 import pinImage from '@img/assets/pin.png';
 import starImage from '@img/assets/star.png';
 import Component from '../lib/Component';
@@ -7,23 +8,32 @@ const MAX_CHAR = 300;
 
 export default class RestaurantCard extends Component {
   set data(newData) {
-    this.props = { data: newData };
+    this.state = { data: newData };
   }
 
   get data() {
-    return this.props?.data ?? null;
+    return this.state?.data ?? null;
   }
 
   async render() {
+    const isFavoriteResto = this.data.isFavorite !== undefined || this.data.isFavorite;
+
     this.innerHTML = `
     <div class="card">
         <img class="banner" alt="">
         <div class="content">
             <h3></h3>
-            <button class="bookmark" 
-              aria-label="Simpan sebagai bookmark" title="Tambahkan Bookmark">
-                <img src="${bookmarkImage}" alt="Simpan Bookmark">
-            </button>
+            ${!isFavoriteResto ? `
+              <button class="bookmark" 
+                aria-label="Tambahkan Favorite" title="Tambahkan Favorit">
+                  <img src="${unlovedImage}" alt="">
+              </button>
+            ` : `
+              <button class="bookmark" 
+                aria-label="Hapus Favorite" title="Hapu Favorit">
+                  <img src="${lovedImage}" alt="">
+              </button>
+            `}
 
             <!-- Lokasi -->
             <img src="${pinImage}" alt="Lokasi Restoran">
@@ -58,7 +68,7 @@ export default class RestaurantCard extends Component {
     this.setElementValue('.resto-location', this.data.city);
     this.setElementValue('.resto-rating', this.data.rating);
     this.setElementValue('.description', message);
-    this.setAttributeValueURI('.banner', 'src', this.data.pictureId);
+    this.setAttributeValueURI('.banner', 'src', this.data.image.md);
   }
 }
 
