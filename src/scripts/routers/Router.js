@@ -6,6 +6,10 @@ export default class RouterComponent extends Component {
   constructor(routerDict) {
     super();
     this.#route = routerDict;
+
+    window.addEventListener('hashchange', () => {
+      this.update();
+    });
   }
 
   async render() {
@@ -13,13 +17,20 @@ export default class RouterComponent extends Component {
       <main id="content"></main>
     `;
 
+    await this.update();
+  }
+
+  async update() {
+    const container = this.querySelector('#content');
+    container.innerHTML = '';
+
     const currentPath = window.location.hash.slice(1);
     const { data: props, page: Page } = this.#route.getRoute(currentPath);
 
     const obj = new Page();
     obj.props = props;
 
-    this.querySelector('#content').appendChild(obj);
+    container.appendChild(obj);
   }
 }
 

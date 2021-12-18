@@ -15,17 +15,9 @@ export default class RestaurantCard extends Component {
   }
 
   async render() {
-    if (this.data === null) {
-      return;
-    }
-
-    const message = this.data.description.length > MAX_CHAR
-      ? `${this.data.description.slice(0, MAX_CHAR - 3)}...`
-      : this.data.description;
-
     this.innerHTML = `
     <div class="card">
-        <img class="banner" src="${encodeURI(this.data.pictureId)}" alt="">
+        <img class="banner" alt="">
         <div class="content">
             <h3></h3>
             <button class="bookmark" 
@@ -41,9 +33,7 @@ export default class RestaurantCard extends Component {
             <img src="${starImage}" alt="Rating Restoran">
             <p class="resto-rating"></p>
 
-            <p class="description">
-              ${message}
-            </p>
+            <p class="description"></p>
 
             <button class="btn detail">
                 Lihat Detail
@@ -52,9 +42,23 @@ export default class RestaurantCard extends Component {
     </div>
     `;
 
+    await this.update();
+  }
+
+  async update() {
+    if (this.data === null) {
+      return;
+    }
+
+    const message = this.data.description.length > MAX_CHAR
+      ? `${this.data.description.slice(0, MAX_CHAR - 3)}...`
+      : this.data.description;
+
     this.setElementValue('h3', this.data.name);
     this.setElementValue('.resto-location', this.data.city);
     this.setElementValue('.resto-rating', this.data.rating);
+    this.setElementValue('.description', message);
+    this.setAttributeValueURI('.banner', 'src', this.data.pictureId);
   }
 }
 

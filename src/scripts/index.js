@@ -6,6 +6,9 @@ import RouteDictionary from './lib/RouteDictionary';
 
 const RouterDictObj = new RouteDictionary();
 
-document.body
-  .appendChild(new SkipToContent())
-  .appendChild(new AppContainer(RouterDictObj));
+document.body.appendChild(new SkipToContent());
+document.body.appendChild(new AppContainer(RouterDictObj));
+
+const overlay = document.createElement('div');
+overlay.className = 'overlay box-overlay hide';
+document.body.appendChild(overlay);

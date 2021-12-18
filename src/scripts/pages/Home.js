@@ -18,6 +18,10 @@ export default class HomePage extends Component {
       <resto-list></resto-list>
     `;
 
+    this.update();
+  }
+
+  async update() {
     const data = await RestoAPI.get();
     const container = this.querySelector('resto-list');
     container.restaurantList = data;

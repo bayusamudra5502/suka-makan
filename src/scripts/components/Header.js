@@ -4,12 +4,12 @@ import xIcon from '@img/assets/x.svg';
 import Component from '../lib/Component';
 
 export default class HeaderApp extends Component {
-  openDrawer = () => {
+  #openDrawer = () => {
     document.querySelector('.box-overlay').classList.remove('hide');
     this.querySelector('.navigation').classList.add('show-drawer');
   };
 
-  closeDrawer = () => {
+  #closeDrawer = () => {
     document.querySelector('.box-overlay').classList.add('hide');
     this.querySelector('.navigation').classList.remove('show-drawer');
   };
@@ -30,10 +30,10 @@ export default class HeaderApp extends Component {
                     </button>
                 </li>
                 <li>
-                    <a href="/">Home</a>
+                    <a href="#/">Home</a>
                 </li>
                 <li>
-                    <a href="#">Favorit</a>
+                    <a href="#/favorite">Favorit</a>
                 </li>
                 <li>
                     <a href="https://github.com/bayusamudra5502">Tentang Kami</a>
@@ -46,17 +46,25 @@ export default class HeaderApp extends Component {
       </header>
     `;
 
+    this.#setListener();
+  }
+
+  #setListener() {
     this
       .querySelector('.burger')
-      .addEventListener('click', this.openDrawer);
+      .addEventListener('click', this.#openDrawer);
 
     document
       .querySelector('.box-overlay')
-      .addEventListener('click', this.closeDrawer);
+      .addEventListener('click', this.#closeDrawer);
 
     this
       .querySelector('.close-button button')
-      .addEventListener('click', this.closeDrawer);
+      .addEventListener('click', this.#closeDrawer);
+
+    this.querySelectorAll('li a').forEach((item) => {
+      item.addEventListener('click', this.#closeDrawer);
+    });
   }
 }
 
