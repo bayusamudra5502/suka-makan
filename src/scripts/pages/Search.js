@@ -2,6 +2,7 @@ import RestaurantModel from '../api/RestaurantModel';
 import LoadingComponent from '../components/Loading';
 import RestaurantListContainer from '../components/RestoList';
 import SearchBar from '../components/SearchBar';
+import SearchEmpty from '../components/SearchEmpty';
 import SearchMessage from '../components/SearchMessage';
 import Component from '../lib/Component';
 
@@ -33,14 +34,9 @@ export default class SearchPage extends Component {
   }
 
   async #getSearchResult() {
-    const container = new RestaurantListContainer();
-
     this.state = { isLoading: true };
 
-    if (this.state.keyword !== '') {
-      const searchResult = await RestaurantModel.searchRestaurant(this.state.keyword);
-      container.restaurantList = searchResult;
-    }
+    const searchResult = this.state.keyword !== '' ? await RestaurantModel.searchRestaurant(this.state.keyword) : [];
 
     this.state = { isLoading: false };
 
@@ -49,8 +45,12 @@ export default class SearchPage extends Component {
 
     if (this.state.keyword === '') {
       result.append(new SearchMessage());
-    } else {
+    } else if (searchResult.length > 0) {
+      const container = new RestaurantListContainer();
+      container.restaurantList = searchResult;
       result.append(container);
+    } else {
+      result.append(new SearchEmpty());
     }
   }
 
