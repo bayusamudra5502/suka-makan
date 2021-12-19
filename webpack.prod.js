@@ -9,9 +9,12 @@ module.exports = merge(common, {
     new MiniCSSExtractPlugin({
       filename: 'static/css/[name].[fullhash].css',
     }),
-    new WorkboxPlugin.InjectManifest({
-      swSrc: "./src/scripts/sw.js",
-      swDest: "service-worker.js"
+    // new WorkboxPlugin.InjectManifest({
+    //   swSrc: "./src/scripts/sw.js",
+    //   swDest: "service-worker.js"
+    // })
+    WorkboxPlugin.GenerateSW({
+      clientsClaim: true
     })
   ],
   output: {
