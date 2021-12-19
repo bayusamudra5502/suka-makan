@@ -4,7 +4,7 @@ export default class ToastComponent extends Component {
   #message;
 
   render() {
-    this.className = 'toast hide';
+    this.classList.add('toast');
     this.innerText = this.#message;
   }
 
@@ -18,6 +18,14 @@ export default class ToastComponent extends Component {
 
   setMessage(message) {
     this.#message = message;
+  }
+
+  show() {
+    this.classList.add('show');
+  }
+
+  hide() {
+    this.classList.remove('show');
   }
 }
 
