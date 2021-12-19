@@ -1,4 +1,4 @@
-<img src="./src/public/images/icon/icon.png" alt="Logo" width="100"/>
+<img src="./src/public/icon-192x192.png" alt="Logo" width="100"/>
 
 # Suka Makan
 ### Dicoding - Kelas Front-End Web Developer Expert
