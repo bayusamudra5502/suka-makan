@@ -1,8 +1,17 @@
+import error404 from '@img/assets/404.svg';
 import Component from '../lib/Component';
+import Message from '../lib/Message';
 
-export default class NotFoundPage extends Component {
-  async render() {
-    this.innerHTML = '<h1>Not Found :(</h1>';
+export default class NotFoundPage extends Message {
+  constructor() {
+    super();
+
+    this.state = {
+      image: error404,
+      imageAlt: 'Kosong',
+      title: 'Oops.. Sepertinya kamu nyasar',
+      subTitle: 'Halaman yang kamu tuju, tidak ditemukan',
+    };
   }
 }
 
