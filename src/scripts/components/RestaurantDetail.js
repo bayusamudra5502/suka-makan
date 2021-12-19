@@ -1,5 +1,7 @@
 import starImage from '@img/assets/star.png';
 import Component from '../lib/Component';
+import './ReviewForm';
+import './ReviewContainer';
 
 export default class RestaurantDetailDescription extends Component {
   render() {
@@ -40,9 +42,13 @@ export default class RestaurantDetailDescription extends Component {
         <section class="review">
           <h2>Ulasan</h2>
           <h3>Tulis Ulasan</h3>
-          <div class="review-writer"></div>
+          <div class="review-writer">
+            <review-form></review-form>
+          </div>
           <h3>Ulasan Pengunjung</h3>
-          <div class="review-item-container"></div>
+          <div class="reviews">
+            <review-container></review-container>
+          </div>
         </section>
       </section>
     `;
@@ -57,6 +63,16 @@ export default class RestaurantDetailDescription extends Component {
     this.insertListElement('.type ul', this.props.categories, ({ name }) => name);
     this.insertListElement('.menus .food-list', this.props.menus.foods, ({ name }) => name);
     this.insertListElement('.menus .drink-list', this.props.menus.drinks, ({ name }) => name);
+
+    const form = this.querySelector('review-form');
+    const reviewContainer = this.querySelector('review-container');
+    form.props = { id: this.props.id };
+
+    form.onaddeddocument = (data) => {
+      reviewContainer.props = { data };
+    };
+
+    reviewContainer.props = { data: this.props.customerReviews };
   }
 }
 
