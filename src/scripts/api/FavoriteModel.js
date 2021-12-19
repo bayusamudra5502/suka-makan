@@ -36,6 +36,11 @@ class FavoriteModel {
   async deleteFavorite(restoId) {
     return (await this.#db).delete(FAVORITE_OBJ_STORE, restoId);
   }
+
+  async isFavorite(restaurantId) {
+    const db = await this.#db;
+    return !!(await db.get(FAVORITE_OBJ_STORE, restaurantId));
+  }
 }
 
 export default (new FavoriteModel());

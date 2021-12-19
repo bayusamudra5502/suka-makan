@@ -4,11 +4,18 @@ import pinImage from '@img/assets/pin.png';
 import starImage from '@img/assets/star.png';
 import Component from '../lib/Component';
 import LinkComponent from './Link';
+import FavoriteModel from '../api/FavoriteModel';
 
 const MAX_CHAR = 300;
 
 export default class RestaurantCard extends Component {
   #linkComponent;
+
+  constructor() {
+    super();
+
+    this.state = { isFavorite: false };
+  }
 
   set data(newData) {
     this.state = { data: newData };
@@ -18,25 +25,26 @@ export default class RestaurantCard extends Component {
     return this.state?.data ?? null;
   }
 
-  async render() {
-    const isFavoriteResto = this.data.isFavorite !== undefined || this.data.isFavorite;
+  async #toggleFavorite() {
+    if (this.state.isFavorite) {
+      await FavoriteModel.deleteFavorite(this.data.id);
+    } else {
+      await FavoriteModel.addFavorite(this.data);
+    }
 
+    this.state = { isFavorite: await FavoriteModel.isFavorite(this.data.id) };
+  }
+
+  async render() {
     this.innerHTML = `
     <div class="card">
         <img class="banner-card" alt="">
         <div class="content">
-            <h3></h3>
-            ${!isFavoriteResto ? `
-              <button class="bookmark" 
-                aria-label="Tambahkan Favorite" title="Tambahkan Favorit">
-                  <img src="${unlovedImage}" alt="">
-              </button>
-            ` : `
-              <button class="bookmark" 
-                aria-label="Hapus Favorite" title="Hapu Favorit">
-                  <img src="${lovedImage}" alt="">
-              </button>
-            `}
+            <h3></h3>         
+            <button class="bookmark" title="Tambahkan Favorit">
+                <img src="${unlovedImage}" alt="">
+            </button>
+      
 
             <!-- Lokasi -->
             <img src="${pinImage}" alt="Lokasi Restoran">
@@ -58,7 +66,13 @@ export default class RestaurantCard extends Component {
 
     this.querySelector('.content').appendChild(this.#linkComponent);
 
+    const isFavorite = await FavoriteModel.isFavorite(this.data.id);
+    this.state = { isFavorite };
     await this.update();
+
+    this.querySelector('.bookmark').onclick = () => {
+      this.#toggleFavorite();
+    };
   }
 
   async update() {
@@ -78,6 +92,21 @@ export default class RestaurantCard extends Component {
 
     if (this.#linkComponent) {
       this.#linkComponent.dataHref = `/detail/${this.data.id}`;
+    }
+
+    const buttonBookmark = this.querySelector('.bookmark');
+    const imgBookmark = this.querySelector('.bookmark img');
+
+    if (!buttonBookmark || !imgBookmark) {
+      return;
+    }
+
+    if (this.state.isFavorite) {
+      buttonBookmark.setAttribute('title', 'Hapus favorit');
+      imgBookmark.setAttribute('src', lovedImage);
+    } else {
+      buttonBookmark.setAttribute('title', 'Tambahkan favorit');
+      imgBookmark.setAttribute('src', unlovedImage);
     }
   }
 }

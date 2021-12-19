@@ -11,6 +11,9 @@ export default class BannerComponent extends Component {
               <img class="pin" src="${pinImage}" alt="Lokasi" />
               <p class="resto-location"></p>
             </div>
+            <div class="favorite">
+              Fav
+            </div>
         </div>
         <img class="banner-image" src="" alt="">
         <div class="overlay"></div>
