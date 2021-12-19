@@ -5,6 +5,7 @@ import starImage from '@img/assets/star.png';
 import Component from '../lib/Component';
 import LinkComponent from './Link';
 import FavoriteModel from '../api/FavoriteModel';
+import Toast from '../lib/Toast';
 
 const MAX_CHAR = 300;
 
@@ -28,8 +29,10 @@ export default class RestaurantCard extends Component {
   async #toggleFavorite() {
     if (this.state.isFavorite) {
       await FavoriteModel.deleteFavorite(this.data.id);
+      Toast.showSuccess('Berhasil menghapus dari daftar favorit');
     } else {
       await FavoriteModel.addFavorite(this.data);
+      Toast.showSuccess('Berhasil menambahkan ke daftar favorit');
     }
 
     this.state = { isFavorite: await FavoriteModel.isFavorite(this.data.id) };

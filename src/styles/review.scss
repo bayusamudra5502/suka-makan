@@ -49,6 +49,9 @@
 .review-container{
   display: grid;
   gap: 15px;
-  grid-template-columns: repeat(auto-fill, minmax(400px,1fr));
+  @media screen and (min-width: 420px) {
+    grid-template-columns: repeat(auto-fill, minmax(400px,1fr));
+    
+  }
   align-items: center;
 }

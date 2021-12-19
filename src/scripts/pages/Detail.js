@@ -1,9 +1,11 @@
+import FavoriteModel from '../api/FavoriteModel';
 import NotFoundError from '../api/NotFoundError';
 import RestaurantModel from '../api/RestaurantModel';
 import BannerComponent from '../components/Banner';
 import LoadingComponent from '../components/Loading';
 import RestaurantDetailDescription from '../components/RestaurantDetail';
 import Component from '../lib/Component';
+import Toast from '../lib/Toast';
 
 export default class RestaurantDetailPage extends Component {
   async #fetchData() {
@@ -11,12 +13,25 @@ export default class RestaurantDetailPage extends Component {
       this.state = { isLoading: true };
       const data = await RestaurantModel.getRestaurantDetail(this.props.id);
       this.state = data;
+      this.state = { isFavorite: await FavoriteModel.isFavorite(this.props.id) };
       this.state = { isLoading: false, isLoaded: true };
     } catch (err) {
       if (err instanceof NotFoundError) {
         window.location.replace('#/notfound');
       }
     }
+  }
+
+  async #toggleFavorite() {
+    if (this.state.isFavorite) {
+      await FavoriteModel.deleteFavorite(this.props.id);
+      Toast.showSuccess('Berhasil menghapus dari daftar favorit');
+    } else {
+      await FavoriteModel.addFavorite(this.state);
+      Toast.showSuccess('Berhasil menambahkan ke daftar favorit');
+    }
+
+    this.state = { isFavorite: await FavoriteModel.isFavorite(this.props.id) };
   }
 
   async render() {
@@ -40,6 +55,11 @@ export default class RestaurantDetailPage extends Component {
       name: this.state.name,
       image: this.state.image.lg,
       location: this.state.city,
+      isFavorite: this.state.isFavorite,
+    };
+
+    banner.onfavoritetoggle = () => {
+      this.#toggleFavorite();
     };
 
     const detailDescription = new RestaurantDetailDescription();

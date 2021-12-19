@@ -71,4 +71,40 @@
   @media screen and (min-width: 700px) {
     max-height: 220px;
   }
+
+}
+
+banner-component{
+  display: block;
+}
+
+.favorite-container{
+  height: 100%;
+  width: 100%;
+  max-width: 800px;
+  margin: 0 auto;
+  position: relative;
+}
+
+.favorite-container .favorite-btn{
+  position: absolute;
+  z-index: 5;
+  bottom: 0;
+  right: 30px;
+  border: 0;
+  background-color: #F50032;
+  border-radius: 50%;
+  padding: 15px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  img{
+    width: 27px;
+  }
+
+  &:hover, &:active{
+    background-color: #ac1130;
+  }
 }

@@ -1,7 +1,7 @@
 import heroImage from '@img/heros/hero-image.jpg';
 import Component from '../lib/Component';
 import RestoAPI from '../api/RestaurantModel';
-import RestaurantListContainer from '../components/RestoList';
+import RestaurantListContainer from '../components/RestaurantListContainer';
 import LoadingComponent from '../components/Loading';
 
 export default class HomePage extends Component {

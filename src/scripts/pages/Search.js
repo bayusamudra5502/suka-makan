@@ -1,6 +1,6 @@
 import RestaurantModel from '../api/RestaurantModel';
 import LoadingComponent from '../components/Loading';
-import RestaurantListContainer from '../components/RestoList';
+import RestaurantListContainer from '../components/RestaurantListContainer';
 import SearchBar from '../components/SearchBar';
 import SearchEmpty from '../components/SearchEmpty';
 import SearchMessage from '../components/SearchMessage';
