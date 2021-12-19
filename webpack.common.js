@@ -1,7 +1,7 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
-const path = require('path');
 const ESLintWebpackPlugin = require('eslint-webpack-plugin');
+const path = require('path');
 
 module.exports = {
   entry: path.resolve(__dirname, 'src/scripts/index.js'),
@@ -43,7 +43,7 @@ module.exports = {
         },
       ],
     }),
-    new ESLintWebpackPlugin(),
+    new ESLintWebpackPlugin()
   ],
   resolve: {
     alias: {

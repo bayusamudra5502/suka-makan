@@ -17,3 +17,9 @@ overlay.className = 'overlay box-overlay hide';
 document.body.appendChild(overlay);
 
 Toast.register(new ToastContainer(ToastComponent));
+
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', () => {
+    navigator.serviceWorker.register('/service-worker.js');
+  });
+}
