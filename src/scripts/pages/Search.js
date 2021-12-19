@@ -14,6 +14,8 @@ export default class SearchPage extends Component {
   }
 
   async render() {
+    document.title = 'Pencarian - Suka Makan';
+
     this.innerHTML = `
       <h2>Pencarian</h2>
     `;

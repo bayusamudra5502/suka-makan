@@ -5,6 +5,7 @@ import Message from '../lib/Message';
 export default class NotFoundPage extends Message {
   constructor() {
     super();
+    document.title = 'Not Found - Suka Makan';
 
     this.state = {
       image: error404,

@@ -6,6 +6,7 @@ import LoadingComponent from '../components/Loading';
 
 export default class HomePage extends Component {
   async render() {
+    document.title = 'Halaman Utama - Suka Makan';
     this.innerHTML = `
       <section class="hero">
           <div class="message">

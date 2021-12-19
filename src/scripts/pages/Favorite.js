@@ -6,6 +6,8 @@ import Component from '../lib/Component';
 
 export default class FavoritePage extends Component {
   async render() {
+    document.title = 'Favorit - Suka Makan';
+
     this.innerHTML = `
         <h2>Halaman Favorit</h2>
         <div class="favorite-page-container"></div>

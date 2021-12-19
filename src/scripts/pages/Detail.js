@@ -2,6 +2,7 @@ import FavoriteModel from '../api/FavoriteModel';
 import NotFoundError from '../api/NotFoundError';
 import RestaurantModel from '../api/RestaurantModel';
 import BannerComponent from '../components/Banner';
+import LinkComponent from '../components/Link';
 import LoadingComponent from '../components/Loading';
 import RestaurantDetailDescription from '../components/RestaurantDetail';
 import Component from '../lib/Component';
@@ -17,7 +18,7 @@ export default class RestaurantDetailPage extends Component {
       this.state = { isLoading: false, isLoaded: true };
     } catch (err) {
       if (err instanceof NotFoundError) {
-        window.location.replace('#/notfound');
+        LinkComponent.redirect('/notfound');
       }
     }
   }
@@ -36,6 +37,7 @@ export default class RestaurantDetailPage extends Component {
 
   async render() {
     await this.#fetchData();
+    document.title = `${this.state.name} - Suka Makan`;
   }
 
   async update() {
