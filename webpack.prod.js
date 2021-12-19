@@ -13,7 +13,7 @@ module.exports = merge(common, {
     //   swSrc: "./src/scripts/sw.js",
     //   swDest: "service-worker.js"
     // })
-    WorkboxPlugin.GenerateSW({
+    new WorkboxPlugin.GenerateSW({
       clientsClaim: true
     })
   ],
