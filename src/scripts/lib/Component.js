@@ -37,6 +37,18 @@ export default class Component extends HTMLElement {
     }
   }
 
+  insertListElement(containerSelector, arrayData, handlerFunction) {
+    const container = this.querySelector(containerSelector);
+
+    arrayData.forEach((element) => {
+      const listElement = document.createElement('li');
+      listElement.innerText = handlerFunction(element);
+      container.append(
+        listElement,
+      );
+    });
+  }
+
   async attributeChangedCallback() {
     await this.render();
   }

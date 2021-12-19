@@ -7,7 +7,7 @@
   flex-direction: column;
   padding: 20px;
   text-align: center;
-  margin: 20px 0;
+  margin: auto;
 
   p {
     margin-bottom: 0;
@@ -21,4 +21,8 @@
     max-width: 250px;
     margin: 15px;
   }
+}
+
+.search-result{
+  margin-top: 20px auto;
 }

@@ -24,6 +24,11 @@ export default class HomePage extends Component {
 
   async update() {
     const container = this.querySelector('.restaurants');
+
+    if (container === null) {
+      return;
+    }
+
     container.innerHTML = '';
     container.appendChild(new LoadingComponent());
 

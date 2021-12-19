@@ -2,7 +2,7 @@
   background-color: #fff;
   overflow: hidden;
 
-  img.banner {
+  img.banner-card {
     width: 100%;
   }
 
@@ -38,6 +38,8 @@
 
     .detail {
       grid-column: -5/-1;
+      text-decoration: none;
+      text-align: center;
     }
 
     margin: 0 0 15px;

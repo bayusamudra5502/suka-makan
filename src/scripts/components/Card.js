@@ -20,7 +20,7 @@ export default class RestaurantCard extends Component {
 
     this.innerHTML = `
     <div class="card">
-        <img class="banner" alt="">
+        <img class="banner-card" alt="">
         <div class="content">
             <h3></h3>
             ${!isFavoriteResto ? `
@@ -45,9 +45,9 @@ export default class RestaurantCard extends Component {
 
             <p class="description"></p>
 
-            <button class="btn detail">
+            <a class="btn detail" href="">
                 Lihat Detail
-            </button>
+            </a>
         </div>
     </div>
     `;
@@ -68,7 +68,8 @@ export default class RestaurantCard extends Component {
     this.setElementValue('.resto-location', this.data.city);
     this.setElementValue('.resto-rating', this.data.rating);
     this.setElementValue('.description', message);
-    this.setAttributeValueURI('.banner', 'src', this.data.image.md);
+    this.setAttributeValueURI('.banner-card', 'src', this.data.image.md);
+    this.setAttributeValueURI('.btn.detail', 'href', `#/detail/${this.data.id}`);
   }
 }
 

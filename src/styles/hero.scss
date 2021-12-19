@@ -47,3 +47,28 @@
     }
   }
 }
+
+.banner{
+  @extend .hero;
+  max-height: 180px;
+
+  .pin{
+    height: 1em;
+    width: auto;
+  }
+
+
+  div.location{
+    margin: 0 10px;
+    display: flex;
+    align-items: center;
+  } 
+
+  .overlay {
+    background-color: rgba(0, 0, 0, 70%);
+  }
+
+  @media screen and (min-width: 700px) {
+    max-height: 220px;
+  }
+}
