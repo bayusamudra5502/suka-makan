@@ -11,10 +11,18 @@ export default class Toast {
   }
 
   static showSuccess(message, delay = 2000) {
+    if (!this.#toastObject) {
+      throw new Error('Toast not yet registered');
+    }
+
     this.#toastObject.addSuccessToast(message, delay);
   }
 
   static showError(message, delay) {
+    if (!this.#toastObject) {
+      throw new Error('Toast not yet registered');
+    }
+
     this.#toastObject.addErrorToast(message, delay);
   }
 }
