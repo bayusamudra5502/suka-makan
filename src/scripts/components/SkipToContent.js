@@ -3,7 +3,7 @@ import Component from '../lib/Component';
 export default class SkipToContent extends Component {
   async render() {
     this.innerHTML = `
-      <a href="#content" class="skip">
+      <a class="skip" href="#content">
           Lewati ke konten
       </a>
     `;

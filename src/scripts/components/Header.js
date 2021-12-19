@@ -3,6 +3,7 @@ import burgerIcon from '@img/assets/burger.png';
 import xIcon from '@img/assets/x.svg';
 import searchIcon from '@img/assets/search.svg';
 import Component from '../lib/Component';
+import './Link';
 
 export default class HeaderApp extends Component {
   #openDrawer = () => {
@@ -31,21 +32,29 @@ export default class HeaderApp extends Component {
                     </button>
                 </li>
                 <li>
-                    <a href="#/">Home</a>
+                    <link-component 
+                        data-content="Home" 
+                        data-href="/" 
+                        data-style="header-link"></link-component>
                 </li>
                 <li>
-                    <a href="#/favorite">Favorit</a>
+                    <link-component 
+                      data-content="Favorit" 
+                      data-href="/favorite" 
+                      data-style="header-link"></link-component>
                 </li>
                 <li>
-                    <a href="https://github.com/bayusamudra5502">Tentang Kami</a>
+                    <a class="header-link" href="https://github.com/bayusamudra5502">Tentang Kami</a>
                 </li>
                 <li>
-                  <a href="#/search">
-                    <img src="${searchIcon}" alt="Pencarian">
-                  </a>
+                  <link-component 
+                    data-content='<img src="${searchIcon}" alt="Pencarian">' 
+                    data-href="/search" 
+                    data-style="header-link"></link-component>
+
                 </li>
                 <li class="skip">
-                    <a href="#navigation">Kembali ke Navigasi</a>
+                    <a href="#navigation" class="header-link">Kembali ke Navigasi</a>
                 </li>
             </ul>
         </nav>

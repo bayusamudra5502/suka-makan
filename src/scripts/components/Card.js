@@ -3,10 +3,13 @@ import lovedImage from '@img/assets/love.png';
 import pinImage from '@img/assets/pin.png';
 import starImage from '@img/assets/star.png';
 import Component from '../lib/Component';
+import LinkComponent from './Link';
 
 const MAX_CHAR = 300;
 
 export default class RestaurantCard extends Component {
+  #linkComponent;
+
   set data(newData) {
     this.state = { data: newData };
   }
@@ -44,13 +47,16 @@ export default class RestaurantCard extends Component {
             <p class="resto-rating"></p>
 
             <p class="description"></p>
-
-            <a class="btn detail" href="">
-                Lihat Detail
-            </a>
         </div>
     </div>
     `;
+
+    this.#linkComponent = (new LinkComponent());
+    this.#linkComponent.className = 'btn-detail';
+    this.#linkComponent.dataStyle = 'btn';
+    this.#linkComponent.dataContent = 'Lihat Detail';
+
+    this.querySelector('.content').appendChild(this.#linkComponent);
 
     await this.update();
   }
@@ -69,7 +75,10 @@ export default class RestaurantCard extends Component {
     this.setElementValue('.resto-rating', this.data.rating);
     this.setElementValue('.description', message);
     this.setAttributeValueURI('.banner-card', 'src', this.data.image.md);
-    this.setAttributeValueURI('.btn.detail', 'href', `#/detail/${this.data.id}`);
+
+    if (this.#linkComponent) {
+      this.#linkComponent.dataHref = `/detail/${this.data.id}`;
+    }
   }
 }
 

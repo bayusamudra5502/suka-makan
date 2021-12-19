@@ -42,15 +42,19 @@ header {
   align-items: stretch;
   flex-direction: column;
 
-  a {
+  .header-link {
     padding: 15px 10px;
     color: black;
     text-decoration: none;
     width: 100%;
     display: block;
+    border: 0;
+    background-color: transparent;
+    font-size: 1rem;
+    cursor: pointer;
   }
 
-  a:hover {
+  .header-link:hover {
     font-weight: bold;
   }
 

@@ -36,10 +36,21 @@
       line-height: 1.4;
     }
 
-    .detail {
+    .btn-detail {
       grid-column: -5/-1;
       text-decoration: none;
       text-align: center;
+    }
+
+    link-component{
+      display: flex;
+      align-items: flex-end;
+      justify-content: flex-end;
+
+      a {
+        padding: 15px 20px;
+        text-decoration: none;
+      }
     }
 
     margin: 0 0 15px;

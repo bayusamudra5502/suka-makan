@@ -7,7 +7,8 @@ export default class RouterComponent extends Component {
     super();
     this.#route = routerDict;
 
-    window.addEventListener('hashchange', () => {
+    window.addEventListener('pagechange', (e) => {
+      window.history.pushState(null, '', `/?${e.detail.to}`);
       this.update();
     });
   }
@@ -24,7 +25,7 @@ export default class RouterComponent extends Component {
     const container = this.querySelector('#content');
     container.innerHTML = '';
 
-    const currentPath = window.location.hash.slice(1);
+    const currentPath = window.location.search.slice(1);
     const { data: props, page: Page } = this.#route.getRoute(currentPath);
 
     const obj = new Page();
