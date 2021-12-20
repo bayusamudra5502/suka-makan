@@ -100,7 +100,7 @@ registerRoute(
   })
 )
 
-/* Handler saat ada update */
+/* Update Handler */
 addEventListener('message', (event) => {
   if (event.data?.type === 'SKIP_WAITING') {
     self.skipWaiting();
