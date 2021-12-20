@@ -57,10 +57,6 @@ export default class Component extends HTMLElement {
     await this.render();
   }
 
-  async render() {
-    throw new Error('Render is not yet implemented');
-  }
-
   async update() {
     await this.render();
   }

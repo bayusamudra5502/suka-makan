@@ -1,7 +1,10 @@
 import Component from './Component';
 
 export default class ToastBaseComponent extends Component {
-  onclose = () => { };
+  constructor() {
+    super();
+    this.onclose = () => { };
+  }
 
   render() {
     this.classList.add('toast');

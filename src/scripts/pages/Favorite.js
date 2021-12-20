@@ -28,6 +28,11 @@ export default class FavoritePage extends Component {
     }
 
     const container = this.querySelector('.favorite-page-container');
+
+    if (!container) {
+      return;
+    }
+
     container.innerHTML = '';
 
     if (this.state.isLoading) {

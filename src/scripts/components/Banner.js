@@ -4,7 +4,10 @@ import imgLoved from '@img/assets/loved-circle.png';
 import Component from '../lib/Component';
 
 export default class BannerComponent extends Component {
-  onfavoritetoggle = () => { };
+  constructor() {
+    super();
+    this.onfavoritetoggle = () => { };
+  }
 
   async render() {
     this.innerHTML = `

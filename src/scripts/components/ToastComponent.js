@@ -4,7 +4,10 @@ import ToastBaseComponent from '../lib/ToastBase';
 export default class ToastComponent extends ToastBaseComponent {
   #message;
 
-  onclose = () => { };
+  constructor() {
+    super();
+    this.onclose = () => { };
+  }
 
   render() {
     super.render();

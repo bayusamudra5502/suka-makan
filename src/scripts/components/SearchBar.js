@@ -2,7 +2,12 @@ import searchIcon from '@img/assets/search.svg';
 import Component from '../lib/Component';
 
 export default class SearchBar extends Component {
-  #submitHandler = () => { };
+  #submitHandler;
+
+  constructor() {
+    super();
+    this.#submitHandler = () => { };
+  }
 
   set onsearch(handler) {
     this.#submitHandler = handler;
