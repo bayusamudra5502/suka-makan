@@ -12,18 +12,21 @@ export default class ToastContainer extends Component {
     this.className = 'toast-container';
   }
 
-  #showToast(toastObject, delay) {
+  #showToast(object, delay) {
+    const toastObject = object;
+
     this.appendChild(toastObject);
     setTimeout(() => {
       toastObject.show();
+      toastObject.onclose = () => {
+        this.removeChild(toastObject);
+      };
 
-      setTimeout(() => {
-        toastObject.hide();
-
+      if (delay !== null) {
         setTimeout(() => {
-          this.removeChild(toastObject);
-        }, 350);
-      }, delay + 500);
+          toastObject.hide();
+        }, delay + 500);
+      }
     }, 0);
   }
 
@@ -32,7 +35,7 @@ export default class ToastContainer extends Component {
     newToast.setAsSuccess();
     newToast.setMessage(message);
 
-    this.#showToast(newToast, delay);
+    this.addCustomToast(newToast, delay);
   }
 
   addErrorToast(message, delay = 2000) {
@@ -40,7 +43,11 @@ export default class ToastContainer extends Component {
     newToast.setAsError();
     newToast.setMessage(message);
 
-    this.#showToast(newToast, delay);
+    this.addCustomToast(newToast, delay);
+  }
+
+  addCustomToast(toastObject, delay = null) {
+    this.#showToast(toastObject, delay);
   }
 }
 

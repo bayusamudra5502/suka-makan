@@ -1,10 +1,13 @@
 import Component from '../lib/Component';
+import ToastBaseComponent from '../lib/ToastBase';
 
-export default class ToastComponent extends Component {
+export default class ToastComponent extends ToastBaseComponent {
   #message;
 
+  onclose = () => { };
+
   render() {
-    this.classList.add('toast');
+    super.render();
     this.innerText = this.#message;
   }
 
@@ -18,14 +21,6 @@ export default class ToastComponent extends Component {
 
   setMessage(message) {
     this.#message = message;
-  }
-
-  show() {
-    this.classList.add('show');
-  }
-
-  hide() {
-    this.classList.remove('show');
   }
 }
 

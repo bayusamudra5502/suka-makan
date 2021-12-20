@@ -4,6 +4,7 @@ import RestaurantModel from '../api/RestaurantModel';
 import BannerComponent from '../components/Banner';
 import LinkComponent from '../components/Link';
 import LoadingComponent from '../components/Loading';
+import OfflineMessage from '../components/OfflineMessage';
 import RestaurantDetailDescription from '../components/RestaurantDetail';
 import Component from '../lib/Component';
 import Toast from '../lib/Toast';
@@ -19,7 +20,10 @@ export default class RestaurantDetailPage extends Component {
     } catch (err) {
       if (err instanceof NotFoundError) {
         LinkComponent.redirect('/notfound');
+        return;
       }
+
+      this.state = { isLoading: false, isOffline: true };
     }
   }
 
@@ -45,6 +49,11 @@ export default class RestaurantDetailPage extends Component {
 
     if (this.state.isLoading) {
       this.append(new LoadingComponent());
+      return;
+    }
+
+    if (this.state.isOffline) {
+      this.append(new OfflineMessage());
       return;
     }
 

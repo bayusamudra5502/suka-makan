@@ -1,5 +1,6 @@
 import RestaurantModel from '../api/RestaurantModel';
 import LoadingComponent from '../components/Loading';
+import OfflineMessage from '../components/OfflineMessage';
 import RestaurantListContainer from '../components/RestaurantListContainer';
 import SearchBar from '../components/SearchBar';
 import SearchEmpty from '../components/SearchEmpty';
@@ -36,23 +37,27 @@ export default class SearchPage extends Component {
   }
 
   async #getSearchResult() {
-    this.state = { isLoading: true };
+    try {
+      this.state = { isLoading: true };
 
-    const searchResult = this.state.keyword !== '' ? await RestaurantModel.searchRestaurant(this.state.keyword) : [];
+      const searchResult = this.state.keyword !== '' ? await RestaurantModel.searchRestaurant(this.state.keyword) : [];
 
-    this.state = { isLoading: false };
+      this.state = { isLoading: false };
 
-    const result = this.querySelector('.search-result');
-    result.innerHTML = '';
+      const result = this.querySelector('.search-result');
+      result.innerHTML = '';
 
-    if (this.state.keyword === '') {
-      result.append(new SearchMessage());
-    } else if (searchResult.length > 0) {
-      const container = new RestaurantListContainer();
-      container.restaurantList = searchResult;
-      result.append(container);
-    } else {
-      result.append(new SearchEmpty());
+      if (this.state.keyword === '') {
+        result.append(new SearchMessage());
+      } else if (searchResult.length > 0) {
+        const container = new RestaurantListContainer();
+        container.restaurantList = searchResult;
+        result.append(container);
+      } else {
+        result.append(new SearchEmpty());
+      }
+    } catch (err) {
+      this.state = { isLoading: false, isOffline: true };
     }
   }
 
@@ -67,6 +72,11 @@ export default class SearchPage extends Component {
 
     if (this.state.isLoading) {
       result.append(new LoadingComponent());
+      return;
+    }
+
+    if (this.state.isOffline) {
+      result.append(new OfflineMessage());
       return;
     }
 

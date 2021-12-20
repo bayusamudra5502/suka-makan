@@ -3,6 +3,7 @@ import Component from '../lib/Component';
 import RestoAPI from '../api/RestaurantModel';
 import RestaurantListContainer from '../components/RestaurantListContainer';
 import LoadingComponent from '../components/Loading';
+import OfflineMessage from '../components/OfflineMessage';
 
 export default class HomePage extends Component {
   async render() {
@@ -33,12 +34,17 @@ export default class HomePage extends Component {
     container.innerHTML = '';
     container.appendChild(new LoadingComponent());
 
-    const data = await RestoAPI.getRestaurants();
-    container.innerHTML = '';
+    try {
+      const data = await RestoAPI.getRestaurants();
+      container.innerHTML = '';
 
-    const restaurantList = new RestaurantListContainer();
-    restaurantList.restaurantList = data;
-    container.appendChild(restaurantList);
+      const restaurantList = new RestaurantListContainer();
+      restaurantList.restaurantList = data;
+      container.appendChild(restaurantList);
+    } catch (err) {
+      container.innerHTML = '';
+      container.appendChild(new OfflineMessage());
+    }
   }
 }
 

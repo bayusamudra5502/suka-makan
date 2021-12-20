@@ -15,7 +15,8 @@
   "license": "ISC",
   "dependencies": {
     "idb": "^7.0.0",
-    "regenerator-runtime": "^0.13.9"
+    "regenerator-runtime": "^0.13.9",
+    "workbox-window": "^6.4.2"
   },
   "devDependencies": {
     "http-server": "^14.0.0",

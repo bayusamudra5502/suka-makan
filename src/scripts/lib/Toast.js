@@ -25,4 +25,12 @@ export default class Toast {
 
     this.#toastObject.addErrorToast(message, delay);
   }
+
+  static showCustomToast(toastObject, delay = null) {
+    if (!this.#toastObject) {
+      throw new Error('Toast not yet registered');
+    }
+
+    this.#toastObject.addCustomToast(toastObject, delay);
+  }
 }

@@ -1,6 +1,7 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const ESLintWebpackPlugin = require('eslint-webpack-plugin');
+
 const path = require('path');
 
 module.exports = {
@@ -43,7 +44,7 @@ module.exports = {
         },
       ],
     }),
-    new ESLintWebpackPlugin()
+    new ESLintWebpackPlugin(),
   ],
   resolve: {
     alias: {

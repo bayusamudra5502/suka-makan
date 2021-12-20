@@ -2,8 +2,7 @@
   display: block;
   position: relative;
   z-index: 100;
-  left: 300px;
-  margin: 20px 0;
+  left: 400px;
 
   &.show {
     display: block;
@@ -19,18 +18,27 @@
 
 
   &.success {
+    max-width: 350px;
     border-left: 5px solid #2a9d8f;
     background-color: #c8f3d7;
   }
 
   &.error{
+    max-width: 350px;
     border-left: 5px solid #e63946;
     background-color: #ffb3c1;
+  }
+
+  &:first-child{
+    margin-top: 25px;
   }
 }
 
 .toast-container{
-  display: block;
+  gap: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
   position: fixed;
   right: 0;
   top: 0;
@@ -39,6 +47,37 @@
   padding: 0 15px;
 
   width: 100%;
-  max-width: 300px;
+  max-width: 400px;
   overflow: hidden;
+}
+
+.updater-toast{
+  padding: 20px 25px;
+  font-size: 0.9rem;
+
+  
+  h2{
+    text-align: left;
+  }
+
+  p{
+    margin-bottom: 20px;
+  }
+
+  button{
+    font-size: 0.9rem;
+    padding: 15px;
+    display: inline-block;
+    margin-right: 5px;
+  }
+
+  .install-later{
+    background-color: transparent;
+    border: 0;
+    cursor: pointer;
+
+    &:hover, &:active{
+      text-decoration: underline;
+    }
+  }
 }
