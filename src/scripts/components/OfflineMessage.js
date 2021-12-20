@@ -10,7 +10,7 @@ export default class OfflineMessage extends Message {
       image: offlineImg,
       imageAlt: 'Tidak Ada Jaringan',
       title: 'Sepertinya kamu sedang offline',
-      subTitle: 'Silahkan periksa kembali jaringan kamu',
+      subTitle: 'Kami tidak bisa menghubungi server saat ini',
     };
   }
 }

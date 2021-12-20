@@ -7,13 +7,21 @@ import './Link';
 
 export default class HeaderApp extends Component {
   #openDrawer = () => {
-    document.querySelector('.box-overlay').classList.remove('hide');
-    this.querySelector('.navigation').classList.add('show-drawer');
+    this.querySelector('.navigation').classList.remove('hidden');
+
+    setTimeout(() => {
+      document.querySelector('.box-overlay').classList.remove('hide');
+      this.querySelector('.navigation').classList.remove('hide');
+    }, 0);
   };
 
   #closeDrawer = () => {
     document.querySelector('.box-overlay').classList.add('hide');
-    this.querySelector('.navigation').classList.remove('show-drawer');
+    this.querySelector('.navigation').classList.add('hide');
+
+    setTimeout(() => {
+      this.querySelector('.navigation').classList.add('hidden');
+    }, 400);
   };
 
   async render() {
@@ -25,7 +33,7 @@ export default class HeaderApp extends Component {
             <img src="${burgerIcon}" alt="">
         </button>
         <nav>
-            <ul class="navigation" id="navigation">
+            <ul class="navigation hidden" id="navigation">
                 <li class="close-button">
                     <button aria-label="Tutup Drawer">
                         <img src="${xIcon}" alt="x">
@@ -80,6 +88,8 @@ export default class HeaderApp extends Component {
     this.querySelectorAll('li a').forEach((item) => {
       item.addEventListener('click', this.#closeDrawer);
     });
+
+    this.querySelector('.skip a').removeEventListener('click', this.#closeDrawer);
   }
 }
 

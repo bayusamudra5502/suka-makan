@@ -27,7 +27,7 @@ header {
 }
 
 .navigation {
-  display: none;
+  display: flex;
   gap: 10px;
   position: fixed;
   min-height: 100vh;
@@ -41,6 +41,8 @@ header {
   padding: 30px 20px;
   align-items: stretch;
   flex-direction: column;
+  transition: all 300ms ease-in-out;
+  height: 100%;
 
   .header-link {
     padding: 15px 10px;
@@ -70,18 +72,23 @@ header {
     background-color: transparent;
     padding: 0;
     top: 0;
-    left: -100vw;
+    left: -1000px;
   }
 
   .skip:focus-within {
     position: static;
   }
+  
+  &.hide {
+    display: flex;
+    right: -500px;
+  }
+
+  &.hidden{
+    display: none;
+  }
 }
 
-.show-drawer {
-  display: flex;
-  height: 100%;
-}
 
 @media screen and (min-width: 600px) {
   .navigation {
@@ -92,6 +99,10 @@ header {
     background-color: transparent;
     padding: 0;
     flex-direction: row;
+
+    &.hidden{
+      display: flex;
+    }
 
     a {
       padding: 15px;
