@@ -1,5 +1,4 @@
 dist/
-specs/
 node_modules/
 DevProfile/
 webpack.*
