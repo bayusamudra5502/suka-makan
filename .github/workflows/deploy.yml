@@ -16,8 +16,9 @@ jobs:
       - name: Cache dependencies
         uses: actions/cache@v2
         with:
-          path: ./node_modules
-          key: ${{ runner.os }}-sukamakan-${{ hashFiles('package-lock.json') }}
+          path: ~/.npm
+          key: ${{ runner.os }}-sukamakan-node-${{ hashFiles('package-lock.json') }}
+          restore-keys: ${{ runner.os }}-sukamakan-node-
       - name: Menginstall Depedencies
         run: npm ci
       - name: Jalankan Integration Test
@@ -37,8 +38,9 @@ jobs:
       - name: Cache dependencies
         uses: actions/cache@v2
         with:
-          path: ./node_modules
-          key: ${{ runner.os }}-sukamakan-${{ hashFiles('package-lock.json') }}
+          path: ~/.npm
+          key: ${{ runner.os }}-sukamakan-node-${{ hashFiles('package-lock.json') }}
+          restore-keys: ${{ runner.os }}-sukamakan-node-
       - name: Menginstall Depedencies
         run: npm ci
       - name: Building Website
