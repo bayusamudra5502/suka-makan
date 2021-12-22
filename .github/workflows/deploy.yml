@@ -9,6 +9,15 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
+      - name: Setup Node
+        uses: actions/setup-node@v2
+        with:
+          node-version: "14"
+      - name: Cache dependencies
+        uses: actions/cache@v2
+        with:
+          path: ./node_modules
+          key: ${{ runner.os }}-sukamakan-${{ hashFiles('package-lock.json') }}
       - name: Menginstall Depedencies
         run: npm ci
       - name: Jalankan Integration Test
@@ -21,6 +30,15 @@ jobs:
       API_TOKEN: ${{ secrets.API_TOKEN }}
     steps:
       - uses: actions/checkout@v2
+      - name: Setup Node
+        uses: actions/setup-node@v2
+        with:
+          node-version: "14"
+      - name: Cache dependencies
+        uses: actions/cache@v2
+        with:
+          path: ./node_modules
+          key: ${{ runner.os }}-sukamakan-${{ hashFiles('package-lock.json') }}
       - name: Menginstall Depedencies
         run: npm ci
       - name: Building Website
