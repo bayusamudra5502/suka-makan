@@ -8,8 +8,12 @@
   position: relative;
   margin-bottom: 32px;
 
-  img {
+  picture-responsive {
     width: 100%;
+
+    img {
+      width: 100%;
+    }
   }
 
   .overlay {
@@ -48,21 +52,20 @@
   }
 }
 
-.banner{
+.banner {
   @extend .hero;
   max-height: 180px;
 
-  .pin{
+  .pin {
     height: 1em;
     width: auto;
   }
 
-
-  div.location{
+  div.location {
     margin: 0 10px;
     display: flex;
     align-items: center;
-  } 
+  }
 
   .overlay {
     background-color: rgba(0, 0, 0, 70%);
@@ -71,14 +74,13 @@
   @media screen and (min-width: 700px) {
     max-height: 220px;
   }
-
 }
 
-banner-component{
+banner-component {
   display: block;
 }
 
-.favorite-container{
+.favorite-container {
   height: 100%;
   width: 100%;
   max-width: 800px;
@@ -86,13 +88,13 @@ banner-component{
   position: relative;
 }
 
-.favorite-container .favorite-btn{
+.favorite-container .favorite-btn {
   position: absolute;
   z-index: 5;
   bottom: 0;
   right: 30px;
   border: 0;
-  background-color: #F50032;
+  background-color: #f50032;
   border-radius: 50%;
   padding: 15px;
   cursor: pointer;
@@ -100,11 +102,12 @@ banner-component{
   align-items: center;
   justify-content: center;
 
-  img{
+  img {
     width: 27px;
   }
 
-  &:hover, &:active{
+  &:hover,
+  &:active {
     background-color: #ac1130;
   }
 }

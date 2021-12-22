@@ -1,4 +1,6 @@
 import heroImage from '@img/heros/hero-image.jpg';
+import heroImageMd from '@img/heros/hero-image-medium.jpg';
+import heroImageSm from '@img/heros/hero-image-small.jpg';
 import Component from '../lib/Component';
 import HeroBaseComponent from './HeroBase';
 
@@ -11,7 +13,8 @@ export default class HeroElement extends HeroBaseComponent {
       <p class="jumbo">Cari dan temukan</p>
       <p>Restoran yang paling cocok bagi anda</p>
     `,
-      src: heroImage,
+      src: { lg: heroImage, md: heroImageMd, sm: heroImageSm },
+      alt: '',
     };
   }
 }

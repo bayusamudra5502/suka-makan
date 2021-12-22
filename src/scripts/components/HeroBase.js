@@ -1,10 +1,11 @@
 import Component from '../lib/Component';
+import './PictureResponsive';
 
 export default class HeroBaseComponent extends Component {
   render() {
     this.innerHTML = `
       <div class="message"></div>
-      <img src="" alt="">
+      <picture-responsive></picture-responsive>
       <div class="overlay"></div>
     `;
   }
@@ -16,7 +17,11 @@ export default class HeroBaseComponent extends Component {
       return;
     }
 
-    this.setAttributeValueURI('img', 'src', this.props.src);
+    const picture = this.querySelector('picture-responsive');
+    picture.addBreakpoint('400px', 'image/jpeg', this.props.src.sm);
+    picture.addBreakpoint('750px', 'image/jpeg', this.props.src.md);
+    picture.setDefaultImage(this.props.src.lg, this.props.alt);
+
     message.innerHTML = this.props.message;
   }
 }

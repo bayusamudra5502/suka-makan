@@ -1,11 +1,22 @@
 const { merge } = require('webpack-merge');
 const MiniCSSExtractPlugin = require('mini-css-extract-plugin');
 const common = require('./webpack.common');
-const WorkboxPlugin = require("workbox-webpack-plugin")
+const WorkboxPlugin = require("workbox-webpack-plugin");
+const ImageMinimizerPlugin = require("image-minimizer-webpack-plugin");
 
 module.exports = merge(common, {
   mode: 'production',
   plugins: [
+    new ImageMinimizerPlugin({
+      minimizer: {
+        implementation: ImageMinimizerPlugin.imageminMinify,
+        options: {
+          plugins: [
+            ["mozjpeg", { progressive: true, quality: 80 }]
+          ]
+        }
+      }
+    }),
     new MiniCSSExtractPlugin({
       filename: 'static/css/[name].[fullhash].css',
     }),

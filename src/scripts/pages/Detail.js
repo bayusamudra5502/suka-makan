@@ -64,7 +64,7 @@ export default class RestaurantDetailPage extends Component {
     const banner = new BannerComponent();
     banner.props = {
       name: this.state.name,
-      image: this.state.image.lg,
+      image: this.state.image,
       location: this.state.city,
       isFavorite: this.state.isFavorite,
     };

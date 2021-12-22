@@ -22,7 +22,7 @@ export default class BannerComponent extends Component {
     this.querySelector('button').onclick = this.onfavoritetoggle;
 
     const bannerImage = this.querySelector('.banner');
-    bannerImage.props = { src: this.props.image };
+    bannerImage.props = { src: this.props.image, alt: `Restoran ${this.props.name}` };
     this.setElementValue('.resto-name', this.props.name);
     this.setElementValue('.resto-location', this.props.location);
 
