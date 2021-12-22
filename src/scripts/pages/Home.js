@@ -1,22 +1,15 @@
-import heroImage from '@img/heros/hero-image.jpg';
 import Component from '../lib/Component';
 import RestoAPI from '../api/RestaurantModel';
 import RestaurantListContainer from '../components/RestaurantListContainer';
 import LoadingComponent from '../components/Loading';
 import OfflineMessage from '../components/OfflineMessage';
+import '../components/Hero';
 
 export default class HomePage extends Component {
   async render() {
     document.title = 'Halaman Utama - Suka Makan';
     this.innerHTML = `
-      <section class="hero">
-          <div class="message">
-              <p class="jumbo">Cari dan temukan</p>
-              <p>Restoran yang paling cocok bagi anda</p>
-          </div>
-          <img src="${heroImage}" alt="">
-          <div class="overlay"></div>
-      </section>
+      <hero-element></hero-element>
       <h2>Daftar Restoran</h2>
       <section class="restaurants"></section>
     `;

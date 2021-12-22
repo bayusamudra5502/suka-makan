@@ -47,7 +47,7 @@ export default class RestaurantDetailPage extends Component {
   async update() {
     this.innerHTML = '';
 
-    if (this.state.isLoading) {
+    if (this.state.isLoading && !this.state.isLoaded) {
       this.append(new LoadingComponent());
       return;
     }
