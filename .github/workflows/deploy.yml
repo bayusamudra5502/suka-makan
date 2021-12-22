@@ -5,8 +5,18 @@ on:
     branches: main
 
 jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Menginstall Depedencies
+        run: npm ci
+      - name: Jalankan Integration Test
+        run: |
+          npm test -- --single-run
   deploy:
     runs-on: ubuntu-latest
+    needs: test
     env:
       API_TOKEN: ${{ secrets.API_TOKEN }}
     steps:
