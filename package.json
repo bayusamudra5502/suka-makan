@@ -24,7 +24,6 @@
   "devDependencies": {
     "@babel/core": "^7.16.5",
     "@babel/preset-env": "^7.16.5",
-    "@squoosh/lib": "^0.4.0",
     "@types/jasmine": "^3.10.2",
     "babel-loader": "^8.2.3",
     "codeceptjs": "^3.2.2",
