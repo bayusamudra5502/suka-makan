@@ -2,8 +2,11 @@ import starImage from '@img/assets/star.png';
 import Component from '../../lib/Component';
 import '../inputs/ReviewForm';
 import '../container/ReviewContainer';
+import '../templates/PictureResponsive';
 
 export default class RestaurantDetailDescription extends Component {
+  #rendered = false;
+
   render() {
     this.innerHTML = `
       <section class="detail">
@@ -29,7 +32,7 @@ export default class RestaurantDetailDescription extends Component {
         <section class="image-resto">
           <h2>Foto Restoran</h2>
           <div class="img-container">
-            <img src="${encodeURI(this.props.image.md)}" alt="Restoran ${this.props.name}" />
+            <picture-responsive></picture-responsive>
           </div>
         </section>
         <section class="rating">
@@ -53,6 +56,15 @@ export default class RestaurantDetailDescription extends Component {
       </section>
     `;
 
+    this.#rendered = true;
+    this.update();
+  }
+
+  update() {
+    if (!this.#rendered) {
+      return;
+    }
+
     this.setElementValue('.description p', this.props.description);
     this.setElementValue(
       '.address p',
@@ -73,6 +85,11 @@ export default class RestaurantDetailDescription extends Component {
     };
 
     reviewContainer.props = { data: this.props.customerReviews };
+
+    this.querySelector('picture-responsive')
+      .setAltImage(`Restoran ${this.props.name}`)
+      .setDefaultImage(this.props.image.md)
+      .addBreakpoint('400px', 'image/jpg', this.props.image.sm);
   }
 }
 

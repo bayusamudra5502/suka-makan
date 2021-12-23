@@ -19,20 +19,24 @@ export default class PictureResponsiveComponent extends Component {
     };
 
     this.update();
+    return this;
   }
 
   setDefaultImage(src, alt = '') {
     this.state = { defaultImage: { src, alt } };
     this.update();
+    return this;
   }
 
   setAltImage(alt) {
     this.state = { alt };
     this.update();
+    return this;
   }
 
   setImageClass(className) {
     this.state = { imgClassName: className };
+    return this;
   }
 
   render() {
