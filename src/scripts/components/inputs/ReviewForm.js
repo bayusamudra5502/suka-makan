@@ -1,6 +1,6 @@
-import RestaurantModel from '../api/RestaurantModel';
-import Component from '../lib/Component';
-import Toast from '../lib/Toast';
+import RestaurantModel from '../../api/RestaurantModel';
+import Component from '../../lib/Component';
+import Toast from '../../lib/Toast';
 
 export default class ReviewForm extends Component {
   constructor() {

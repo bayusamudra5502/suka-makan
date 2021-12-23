@@ -1,7 +1,7 @@
 import imgUnloved from '@img/assets/unloved-circle.png';
 import imgLoved from '@img/assets/loved-circle.png';
-import Component from '../lib/Component';
-import './BannerHero';
+import Component from '../../lib/Component';
+import '../hero/BannerHero';
 
 export default class BannerComponent extends Component {
   constructor() {

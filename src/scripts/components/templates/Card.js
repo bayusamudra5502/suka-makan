@@ -2,10 +2,11 @@ import unlovedImage from '@img/assets/unlove.png';
 import lovedImage from '@img/assets/love.png';
 import pinImage from '@img/assets/pin.png';
 import starImage from '@img/assets/star.png';
-import Component from '../lib/Component';
+import Component from '../../lib/Component';
 import LinkComponent from './Link';
-import FavoriteModel from '../api/FavoriteModel';
-import Toast from '../lib/Toast';
+import FavoriteModel from '../../api/FavoriteModel';
+import Toast from '../../lib/Toast';
+import './PictureResponsive';
 
 const MAX_CHAR = 300;
 
@@ -41,7 +42,7 @@ export default class RestaurantCard extends Component {
   async render() {
     this.innerHTML = `
     <div class="card">
-        <img class="banner-card" alt="">
+        <picture-responsive class="banner-card"></picture-responsive>
         <div class="content">
             <h3></h3>         
             <button class="bookmark" title="Tambahkan Favorit">
@@ -91,7 +92,12 @@ export default class RestaurantCard extends Component {
     this.setElementValue('.resto-location', this.data.city);
     this.setElementValue('.resto-rating', this.data.rating);
     this.setElementValue('.description', message);
-    this.setAttributeValueURI('.banner-card', 'src', this.data.image.md);
+
+    const cardPicture = this.querySelector('.banner-card');
+
+    if (cardPicture) {
+      cardPicture.setDefaultImage(this.data.image.sm);
+    }
 
     if (this.#linkComponent) {
       this.#linkComponent.dataHref = `/detail/${this.data.id}`;

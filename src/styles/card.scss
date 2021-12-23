@@ -2,8 +2,12 @@
   background-color: #fff;
   overflow: hidden;
 
-  img.banner-card {
+  .banner-card {
     width: 100%;
+
+    img {
+      width: 100%;
+    }
   }
 
   box-shadow: 3px 4px 10px rgba(143, 143, 143, 0.25);
@@ -42,7 +46,7 @@
       text-align: center;
     }
 
-    link-component{
+    link-component {
       display: flex;
       align-items: flex-end;
       justify-content: flex-end;
@@ -62,7 +66,7 @@
     padding: 15px;
     cursor: pointer;
 
-    img{
+    img {
       width: 22px;
     }
   }

@@ -1,6 +1,6 @@
 import cookwareImg from '@img/assets/cookware.png';
-import Component from '../lib/Component';
-import Message from '../lib/Message';
+import Component from '../../lib/Component';
+import Message from '../templates/Message';
 
 export default class LoadingComponent extends Message {
   constructor() {

@@ -1,11 +1,11 @@
 import FavoriteModel from '../api/FavoriteModel';
 import NotFoundError from '../api/NotFoundError';
 import RestaurantModel from '../api/RestaurantModel';
-import BannerComponent from '../components/Banner';
-import LinkComponent from '../components/Link';
-import LoadingComponent from '../components/Loading';
-import OfflineMessage from '../components/OfflineMessage';
-import RestaurantDetailDescription from '../components/RestaurantDetail';
+import BannerComponent from '../components/sections/Banner';
+import LinkComponent from '../components/templates/Link';
+import LoadingComponent from '../components/feedback/Loading';
+import OfflineMessage from '../components/feedback/OfflineMessage';
+import RestaurantDetailDescription from '../components/sections/RestaurantDetail';
 import Component from '../lib/Component';
 import Toast from '../lib/Toast';
 

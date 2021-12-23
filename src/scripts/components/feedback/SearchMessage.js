@@ -1,6 +1,6 @@
 import searchMessage from '@img/assets/search-message.png';
-import Component from '../lib/Component';
-import Message from '../lib/Message';
+import Component from '../../lib/Component';
+import Message from '../templates/Message';
 
 export default class SearchMessage extends Message {
   constructor() {

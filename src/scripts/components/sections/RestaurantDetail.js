@@ -1,7 +1,7 @@
 import starImage from '@img/assets/star.png';
-import Component from '../lib/Component';
-import './ReviewForm';
-import './ReviewContainer';
+import Component from '../../lib/Component';
+import '../inputs/ReviewForm';
+import '../container/ReviewContainer';
 
 export default class RestaurantDetailDescription extends Component {
   render() {

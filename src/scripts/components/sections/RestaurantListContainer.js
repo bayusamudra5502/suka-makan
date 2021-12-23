@@ -1,5 +1,5 @@
-import Component from '../lib/Component';
-import RestaurantCard from './Card';
+import Component from '../../lib/Component';
+import RestaurantCard from '../templates/Card';
 
 export default class RestaurantListContainer extends Component {
   set restaurantList(data) {

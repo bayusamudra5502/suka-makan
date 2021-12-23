@@ -1,15 +1,17 @@
 import 'regenerator-runtime'; /* for async await transpile */
 import '../styles/main.scss';
+import 'lazysizes';
+import 'lazysizes/plugins/parent-fit/ls.parent-fit';
 
 import { Workbox } from 'workbox-window';
 
 import AppContainer from './App';
-import SkipToContent from './components/SkipToContent';
-import ToastComponent from './components/ToastComponent';
-import ToastContainer from './components/ToastContainer';
+import SkipToContent from './components/sections/SkipToContent';
+import ToastComponent from './components/toast/ToastComponent';
+import ToastContainer from './components/container/ToastContainer';
 import RouteDictionary from './lib/RouteDictionary';
 import Toast from './lib/Toast';
-import UpdateToast from './components/UpdateToast';
+import UpdateToast from './components/toast/UpdateToast';
 
 const RouterDictObj = new RouteDictionary();
 

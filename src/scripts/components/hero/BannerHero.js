@@ -1,6 +1,6 @@
 import pinImage from '@img/assets/pin.png';
-import Component from '../lib/Component';
-import HeroBaseComponent from './HeroBase';
+import Component from '../../lib/Component';
+import HeroBaseComponent from '../base/HeroBase';
 
 export default class BannerHero extends HeroBaseComponent {
   render() {

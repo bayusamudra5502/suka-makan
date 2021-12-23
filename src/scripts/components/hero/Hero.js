@@ -1,8 +1,8 @@
 import heroImage from '@img/heros/hero-image.jpg';
 import heroImageMd from '@img/heros/hero-image-medium.jpg';
 import heroImageSm from '@img/heros/hero-image-small.jpg';
-import Component from '../lib/Component';
-import HeroBaseComponent from './HeroBase';
+import Component from '../../lib/Component';
+import HeroBaseComponent from '../base/HeroBase';
 
 export default class HeroElement extends HeroBaseComponent {
   render() {

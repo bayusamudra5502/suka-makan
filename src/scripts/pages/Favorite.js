@@ -1,7 +1,7 @@
 import FavoriteModel from '../api/FavoriteModel';
-import FavoriteEmpty from '../components/FavoriteEmpty';
-import LoadingComponent from '../components/Loading';
-import RestaurantListContainer from '../components/RestaurantListContainer';
+import FavoriteEmpty from '../components/feedback/FavoriteEmpty';
+import LoadingComponent from '../components/feedback/Loading';
+import RestaurantListContainer from '../components/sections/RestaurantListContainer';
 import Component from '../lib/Component';
 
 export default class FavoritePage extends Component {

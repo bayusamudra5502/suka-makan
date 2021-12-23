@@ -1,5 +1,5 @@
-import Component from '../lib/Component';
-import ReviewItem from './ReviewItem';
+import Component from '../../lib/Component';
+import ReviewItem from '../templates/ReviewItem';
 
 export default class ReviewContainer extends Component {
   async render() {

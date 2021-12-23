@@ -1,10 +1,10 @@
 import RestaurantModel from '../api/RestaurantModel';
-import LoadingComponent from '../components/Loading';
-import OfflineMessage from '../components/OfflineMessage';
-import RestaurantListContainer from '../components/RestaurantListContainer';
-import SearchBar from '../components/SearchBar';
-import SearchEmpty from '../components/SearchEmpty';
-import SearchMessage from '../components/SearchMessage';
+import LoadingComponent from '../components/feedback/Loading';
+import OfflineMessage from '../components/feedback/OfflineMessage';
+import RestaurantListContainer from '../components/sections/RestaurantListContainer';
+import SearchBar from '../components/inputs/SearchBar';
+import SearchEmpty from '../components/feedback/SearchEmpty';
+import SearchMessage from '../components/feedback/SearchMessage';
 import Component from '../lib/Component';
 
 export default class SearchPage extends Component {

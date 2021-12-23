@@ -1,5 +1,5 @@
-import Component from '../lib/Component';
-import ToastBaseComponent from '../lib/ToastBase';
+import Component from '../../lib/Component';
+import ToastBaseComponent from '../base/ToastBase';
 
 export default class ToastComponent extends ToastBaseComponent {
   #message;

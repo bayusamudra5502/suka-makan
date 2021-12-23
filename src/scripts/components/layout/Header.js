@@ -2,8 +2,8 @@ import iconApp from '@img/icon/icon.png';
 import burgerIcon from '@img/assets/burger.png';
 import xIcon from '@img/assets/x.svg';
 import searchIcon from '@img/assets/search.svg';
-import Component from '../lib/Component';
-import './Link';
+import Component from '../../lib/Component';
+import '../templates/Link';
 
 export default class HeaderApp extends Component {
   #openDrawer = () => {

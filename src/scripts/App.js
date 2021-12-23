@@ -1,5 +1,5 @@
-import Footer from './components/Footer';
-import HeaderApp from './components/Header';
+import Footer from './components/layout/Footer';
+import HeaderApp from './components/layout/Header';
 import Component from './lib/Component';
 import RestaurantDetail from './pages/Detail';
 import FavoritePage from './pages/Favorite';

@@ -1,6 +1,6 @@
 import error404 from '@img/assets/404.svg';
 import Component from '../lib/Component';
-import Message from '../lib/Message';
+import Message from '../components/templates/Message';
 
 export default class NotFoundPage extends Message {
   constructor() {

@@ -1,5 +1,5 @@
 import searchIcon from '@img/assets/search.svg';
-import Component from '../lib/Component';
+import Component from '../../lib/Component';
 
 export default class SearchBar extends Component {
   #submitHandler;

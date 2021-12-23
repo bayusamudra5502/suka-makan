@@ -1,4 +1,4 @@
-import Component from './Component';
+import Component from '../../lib/Component';
 
 export default class ToastBaseComponent extends Component {
   constructor() {

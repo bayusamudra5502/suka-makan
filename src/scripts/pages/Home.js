@@ -1,9 +1,9 @@
 import Component from '../lib/Component';
 import RestoAPI from '../api/RestaurantModel';
-import RestaurantListContainer from '../components/RestaurantListContainer';
-import LoadingComponent from '../components/Loading';
-import OfflineMessage from '../components/OfflineMessage';
-import '../components/Hero';
+import RestaurantListContainer from '../components/sections/RestaurantListContainer';
+import LoadingComponent from '../components/feedback/Loading';
+import OfflineMessage from '../components/feedback/OfflineMessage';
+import '../components/hero/Hero';
 
 export default class HomePage extends Component {
   async render() {

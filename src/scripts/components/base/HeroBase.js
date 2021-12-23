@@ -1,5 +1,5 @@
-import Component from '../lib/Component';
-import './PictureResponsive';
+import Component from '../../lib/Component';
+import '../templates/PictureResponsive';
 
 export default class HeroBaseComponent extends Component {
   render() {
