@@ -1,7 +1,7 @@
 import Component from '../../lib/Component';
 
 export default class ReviewItem extends Component {
-  async render() {
+  render() {
     this.className = 'review-item';
     this.innerHTML = `
       <p class="name"></p>
@@ -10,11 +10,11 @@ export default class ReviewItem extends Component {
     `;
   }
 
-  async afterRender() {
-    await this.update();
+  afterRender() {
+    this.update();
   }
 
-  async update() {
+  update() {
     if (!this.props) {
       return;
     }

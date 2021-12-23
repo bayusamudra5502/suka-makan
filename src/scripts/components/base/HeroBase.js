@@ -2,7 +2,7 @@ import Component from '../../lib/Component';
 import '../templates/PictureResponsive';
 
 export default class HeroBaseComponent extends Component {
-  async render() {
+  render() {
     this.innerHTML = `
       <div class="message"></div>
       <picture-responsive></picture-responsive>
@@ -10,11 +10,11 @@ export default class HeroBaseComponent extends Component {
     `;
   }
 
-  async afterRender() {
-    await this.update();
+  afterRender() {
+    this.update();
   }
 
-  async update() {
+  update() {
     const message = this.querySelector('.message');
 
     if (!message || !this.props) {

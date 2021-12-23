@@ -6,7 +6,7 @@ import OfflineMessage from '../components/feedback/OfflineMessage';
 import '../components/hero/Hero';
 
 export default class HomePage extends Component {
-  async render() {
+  render() {
     document.title = 'Halaman Utama - Suka Makan';
     this.innerHTML = `
       <hero-element></hero-element>
@@ -15,8 +15,8 @@ export default class HomePage extends Component {
     `;
   }
 
-  async afterRender() {
-    await this.update();
+  afterRender() {
+    this.update();
   }
 
   async update() {

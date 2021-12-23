@@ -37,7 +37,7 @@ export default class RestaurantCard extends Component {
     this.state = { isFavorite: await FavoriteModel.isFavorite(this.data.id) };
   }
 
-  async render() {
+  render() {
     this.innerHTML = `
     <div class="card">
         <picture-responsive class="banner-card"></picture-responsive>
@@ -60,7 +60,9 @@ export default class RestaurantCard extends Component {
         </div>
     </div>
     `;
+  }
 
+  async afterRender() {
     const linkComponent = (new LinkComponent());
     linkComponent.className = 'btn-detail';
     linkComponent.dataStyle = 'btn';
@@ -88,13 +90,11 @@ export default class RestaurantCard extends Component {
 
     const cardPicture = this.querySelector('.banner-card');
     cardPicture.setDefaultImage(this.data.image.sm);
-  }
 
-  async afterRender() {
     this.update();
   }
 
-  async update() {
+  update() {
     const buttonBookmark = this.querySelector('.bookmark');
     const imgBookmark = this.querySelector('.bookmark img');
 

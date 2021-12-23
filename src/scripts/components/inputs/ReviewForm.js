@@ -8,7 +8,7 @@ export default class ReviewForm extends Component {
     this.onaddeddocument = () => { };
   }
 
-  async render() {
+  render() {
     this.innerHTML = `
       <form>
         <input required name="name" placeholder="Nama Pengulas">
@@ -26,7 +26,7 @@ export default class ReviewForm extends Component {
     });
   }
 
-  async update() {
+  update() {
     const submitButton = this.querySelector('form button');
 
     if (this.state.isLoading) {

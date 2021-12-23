@@ -22,7 +22,7 @@ export default class AppContainer extends Component {
     this.#router.addRoute('/detail/:id', RestaurantDetail);
   }
 
-  async render() {
+  render() {
     this.appendChild(new HeaderApp());
     this.appendChild(new RouterComponent(this.#router));
     this.appendChild(new Footer());

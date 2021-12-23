@@ -40,8 +40,8 @@ export default class RestaurantDetailPage extends Component {
   }
 
   async render() {
-    await this.#fetchData();
     document.title = `${this.state.name} - Suka Makan`;
+    await this.#fetchData();
   }
 
   async update() {

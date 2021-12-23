@@ -33,17 +33,17 @@ export default class LinkComponent extends Component {
     return this.state.content || this.getAttribute('data-content');
   }
 
-  async render() {
+  render() {
     this.innerHTML = `
       <a class="" href=""></a>
     `;
   }
 
-  async afterRender() {
-    await this.update();
+  afterRender() {
+    this.update();
   }
 
-  async update() {
+  update() {
     const linkElement = this.querySelector('a');
     linkElement.onclick = (e) => {
       e.preventDefault();

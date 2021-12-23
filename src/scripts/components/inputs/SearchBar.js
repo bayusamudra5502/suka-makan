@@ -17,7 +17,7 @@ export default class SearchBar extends Component {
     return this.#submitHandler;
   }
 
-  async render() {
+  render() {
     this.innerHTML = `
       <section id="search" class="search-container">      
         <form class="search-bar">
@@ -30,7 +30,7 @@ export default class SearchBar extends Component {
     `;
   }
 
-  async afterRender() {
+  afterRender() {
     this.querySelector('form').onsubmit = (e) => {
       e.preventDefault();
       this.#submitHandler(e.target[0].value);

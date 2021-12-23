@@ -42,11 +42,11 @@ export default class PictureResponsiveComponent extends Component {
     `;
   }
 
-  async afterRender() {
-    await this.update();
+  afterRender() {
+    this.update();
   }
 
-  async update() {
+  update() {
     const picture = this.querySelector('picture');
     picture.innerHTML = '';
 

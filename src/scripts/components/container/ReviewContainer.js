@@ -2,15 +2,15 @@ import Component from '../../lib/Component';
 import ReviewItem from '../templates/ReviewItem';
 
 export default class ReviewContainer extends Component {
-  async render() {
+  render() {
     this.className = 'review-container';
   }
 
-  async afterRender() {
-    await this.update();
+  afterRender() {
+    this.update();
   }
 
-  async update() {
+  update() {
     this.innerHTML = '';
     this.props.data.forEach((review) => {
       const newReview = new ReviewItem();

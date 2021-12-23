@@ -1,7 +1,7 @@
 import Component from '../../lib/Component';
 
 export default class SkipToContent extends Component {
-  async render() {
+  render() {
     this.innerHTML = `
       <a class="skip" href="#content">
           Lewati ke konten

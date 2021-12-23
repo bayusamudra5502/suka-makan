@@ -14,7 +14,7 @@ export default class SearchPage extends Component {
     this.state = { keyword: '', isLoading: false };
   }
 
-  async render() {
+  render() {
     document.title = 'Pencarian - Suka Makan';
 
     this.innerHTML = `
@@ -32,7 +32,9 @@ export default class SearchPage extends Component {
     const result = document.createElement('div');
     result.className = 'search-result';
     this.append(result);
+  }
 
+  afterRender() {
     this.update();
   }
 
@@ -61,7 +63,7 @@ export default class SearchPage extends Component {
     }
   }
 
-  async update() {
+  update() {
     const result = this.querySelector('.search-result');
 
     if (result === null) {

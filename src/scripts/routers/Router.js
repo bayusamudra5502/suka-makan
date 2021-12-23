@@ -13,17 +13,17 @@ export default class RouterComponent extends Component {
     });
   }
 
-  async render() {
+  render() {
     this.innerHTML = `
       <main id="content"></main>
     `;
   }
 
-  async afterRender() {
-    await this.update();
+  afterRender() {
+    this.update();
   }
 
-  async update() {
+  update() {
     const container = this.querySelector('#content');
     container.innerHTML = '';
 

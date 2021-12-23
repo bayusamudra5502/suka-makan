@@ -1,7 +1,7 @@
 import Component from '../../lib/Component';
 
 export default class Message extends Component {
-  async render() {
+  render() {
     this.className = 'message-box';
     this.innerHTML = `
       <img src="${this.state.image}" alt="${this.state.imageAlt}">
@@ -10,11 +10,11 @@ export default class Message extends Component {
     `;
   }
 
-  async afterRender() {
-    await this.update();
+  afterRender() {
+    this.update();
   }
 
-  async update() {
+  update() {
     const imgElement = this.querySelector('img');
 
     imgElement.src = this.state.image;

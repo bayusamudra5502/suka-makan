@@ -10,14 +10,14 @@ export default class RestaurantListContainer extends Component {
     return this.props?.data ?? null;
   }
 
-  async render() {
+  render() {
     this.innerHTML = `
       <section class="result" id="result">
       </section>
     `;
   }
 
-  async afterRender() {
+  afterRender() {
     if (this.restaurantList === null) {
       return;
     }

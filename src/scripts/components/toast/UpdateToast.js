@@ -9,7 +9,7 @@ export default class UpdateToast extends ToastBaseComponent {
     this.#onAccepted = onAccepted;
   }
 
-  async render() {
+  render() {
     super.render();
     this.classList.add('updater-toast');
 
@@ -23,11 +23,11 @@ export default class UpdateToast extends ToastBaseComponent {
     `;
   }
 
-  async afterRender() {
-    await this.update();
+  afterRender() {
+    this.update();
   }
 
-  async update() {
+  update() {
     this.querySelector('.install-now').onclick = () => {
       this.#onAccepted();
     };

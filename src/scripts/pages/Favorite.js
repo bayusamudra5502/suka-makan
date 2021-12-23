@@ -22,7 +22,7 @@ export default class FavoritePage extends Component {
     this.state.favorites = await FavoriteModel.getFavorites();
   }
 
-  async update() {
+  update() {
     if (!this.state) {
       return;
     }

@@ -5,7 +5,7 @@ import '../container/ReviewContainer';
 import '../templates/PictureResponsive';
 
 export default class RestaurantDetailDescription extends Component {
-  async render() {
+  render() {
     this.innerHTML = `
       <section class="detail">
         <section class="description">

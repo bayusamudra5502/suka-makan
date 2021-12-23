@@ -24,7 +24,7 @@ export default class HeaderApp extends Component {
     }, 400);
   };
 
-  async render() {
+  render() {
     this.innerHTML = `
       <header>
         <img class="logo" src="${iconApp}" alt="Logo Suka Makan">
@@ -70,7 +70,7 @@ export default class HeaderApp extends Component {
     `;
   }
 
-  async afterRender() {
+  afterRender() {
     this
       .querySelector('.burger')
       .addEventListener('click', this.#openDrawer);

@@ -9,7 +9,7 @@ export default class BannerComponent extends Component {
     this.onfavoritetoggle = () => { };
   }
 
-  async render() {
+  render() {
     this.innerHTML = `
     <banner-hero></banner-hero>
     <div class="favorite-container">
@@ -20,7 +20,7 @@ export default class BannerComponent extends Component {
     `;
   }
 
-  async afterRender() {
+  afterRender() {
     this.querySelector('button').onclick = this.onfavoritetoggle;
 
     const bannerImage = this.querySelector('.banner');
@@ -28,10 +28,10 @@ export default class BannerComponent extends Component {
     this.setElementValue('.resto-name', this.props.name);
     this.setElementValue('.resto-location', this.props.location);
 
-    await this.update();
+    this.update();
   }
 
-  async update() {
+  update() {
     const buttonFavorite = this.querySelector('button');
     const imageBtnFavorite = this.querySelector('button img');
 
