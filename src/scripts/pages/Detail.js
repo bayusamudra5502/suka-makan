@@ -45,6 +45,20 @@ export default class RestaurantDetailPage extends Component {
   }
 
   async update() {
+    if (!this.state.isLoaded) {
+      return;
+    }
+
+    const bannerComponent = document.querySelector('banner-component');
+    bannerComponent.props = {
+      name: this.state.name,
+      image: this.state.image,
+      location: this.state.city,
+      isFavorite: this.state.isFavorite,
+    };
+  }
+
+  async afterRender() {
     this.innerHTML = '';
 
     if (this.state.isLoading && !this.state.isLoaded) {
@@ -54,10 +68,6 @@ export default class RestaurantDetailPage extends Component {
 
     if (this.state.isOffline) {
       this.append(new OfflineMessage());
-      return;
-    }
-
-    if (!this.state.isLoaded) {
       return;
     }
 

@@ -2,12 +2,25 @@ import Component from '../../lib/Component';
 
 export default class Message extends Component {
   async render() {
+    this.className = 'message-box';
     this.innerHTML = `
-      <div class="message-box">
-        <img src="${this.state.image}" alt="${this.state.imageAlt}">
-        <p class="message-title">${this.state.title}</p>
-        <div class="message-subtitle">${this.state.subTitle}</div>
-      </div>
+      <img src="${this.state.image}" alt="${this.state.imageAlt}">
+      <p class="message-title">${this.state.title}</p>
+      <div class="message-subtitle">${this.state.subTitle}</div>
     `;
+  }
+
+  async afterRender() {
+    await this.update();
+  }
+
+  async update() {
+    const imgElement = this.querySelector('img');
+
+    imgElement.src = this.state.image;
+    imgElement.alt = this.state.imageAlt;
+
+    this.querySelector('.message-title').innerHTML = this.state.title;
+    this.querySelector('.message-subtitle').innerHTML = this.state.subTitle;
   }
 }

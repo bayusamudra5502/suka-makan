@@ -8,8 +8,10 @@ export default class ReviewItem extends Component {
       <p class="date"></p>
       <p class="review"></p>
     `;
+  }
 
-    this.update();
+  async afterRender() {
+    await this.update();
   }
 
   async update() {

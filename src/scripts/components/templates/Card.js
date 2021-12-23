@@ -11,8 +11,6 @@ import './PictureResponsive';
 const MAX_CHAR = 300;
 
 export default class RestaurantCard extends Component {
-  #linkComponent;
-
   constructor() {
     super();
 
@@ -63,12 +61,13 @@ export default class RestaurantCard extends Component {
     </div>
     `;
 
-    this.#linkComponent = (new LinkComponent());
-    this.#linkComponent.className = 'btn-detail';
-    this.#linkComponent.dataStyle = 'btn';
-    this.#linkComponent.dataContent = 'Lihat Detail';
+    const linkComponent = (new LinkComponent());
+    linkComponent.className = 'btn-detail';
+    linkComponent.dataStyle = 'btn';
+    linkComponent.dataContent = 'Lihat Detail';
+    linkComponent.dataHref = `/detail/${this.data.id}`;
 
-    this.querySelector('.content').appendChild(this.#linkComponent);
+    this.querySelector('.content').appendChild(linkComponent);
 
     const isFavorite = await FavoriteModel.isFavorite(this.data.id);
     this.state = { isFavorite };
@@ -77,12 +76,6 @@ export default class RestaurantCard extends Component {
     this.querySelector('.bookmark').onclick = () => {
       this.#toggleFavorite();
     };
-  }
-
-  async update() {
-    if (this.data === null) {
-      return;
-    }
 
     const message = this.data.description.length > MAX_CHAR
       ? `${this.data.description.slice(0, MAX_CHAR - 3)}...`
@@ -94,21 +87,16 @@ export default class RestaurantCard extends Component {
     this.setElementValue('.description', message);
 
     const cardPicture = this.querySelector('.banner-card');
+    cardPicture.setDefaultImage(this.data.image.sm);
+  }
 
-    if (cardPicture) {
-      cardPicture.setDefaultImage(this.data.image.sm);
-    }
+  async afterRender() {
+    this.update();
+  }
 
-    if (this.#linkComponent) {
-      this.#linkComponent.dataHref = `/detail/${this.data.id}`;
-    }
-
+  async update() {
     const buttonBookmark = this.querySelector('.bookmark');
     const imgBookmark = this.querySelector('.bookmark img');
-
-    if (!buttonBookmark || !imgBookmark) {
-      return;
-    }
 
     if (this.state.isFavorite) {
       buttonBookmark.setAttribute('title', 'Hapus favorit');

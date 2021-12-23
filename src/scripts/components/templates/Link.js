@@ -9,51 +9,50 @@ export default class LinkComponent extends Component {
     window.dispatchEvent(triggerRedirect);
   }
 
-  #className;
-
-  #location;
-
-  #innerHTML;
-
   set dataStyle(newClass) {
-    this.#className = newClass;
-    this.update();
+    this.state = { className: newClass };
   }
 
   get dataStyle() {
-    return this.#className || this.getAttribute('data-style');
+    return this.state.className || this.getAttribute('data-style');
   }
 
   set dataHref(to) {
-    this.#location = to;
-    this.update();
+    this.state = { location: to };
   }
 
   get dataHref() {
-    return this.#location || this.getAttribute('data-href');
+    return this.state.location || this.getAttribute('data-href');
   }
 
   set dataContent(content) {
-    this.#innerHTML = content;
-    this.update();
+    this.state = { content };
   }
 
   get dataContent() {
-    return this.#innerHTML || this.getAttribute('data-content');
+    return this.state.content || this.getAttribute('data-content');
   }
 
   async render() {
     this.innerHTML = `
-      <a class="${this.dataStyle}" 
-        href="/?${this.dataHref}">
-        ${this.dataContent}
-      </a>
+      <a class="" href=""></a>
     `;
+  }
 
-    this.querySelector('a').onclick = (e) => {
+  async afterRender() {
+    await this.update();
+  }
+
+  async update() {
+    const linkElement = this.querySelector('a');
+    linkElement.onclick = (e) => {
       e.preventDefault();
       LinkComponent.redirect(this.dataHref);
     };
+
+    linkElement.className = this.dataStyle;
+    linkElement.href = `/?${this.dataHref}`;
+    linkElement.innerHTML = this.dataContent;
   }
 
   async;

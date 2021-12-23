@@ -68,11 +68,9 @@ export default class HeaderApp extends Component {
         </nav>
       </header>
     `;
-
-    this.#setListener();
   }
 
-  #setListener() {
+  async afterRender() {
     this
       .querySelector('.burger')
       .addEventListener('click', this.#openDrawer);

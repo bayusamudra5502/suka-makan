@@ -21,7 +21,9 @@ export default class UpdateToast extends ToastBaseComponent {
       <button class="btn install-now">Install Sekarang</button>
       <button class="install-later">Nanti saja</button>      
     `;
+  }
 
+  async afterRender() {
     await this.update();
   }
 

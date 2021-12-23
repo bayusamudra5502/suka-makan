@@ -1,11 +1,14 @@
 export default class Component extends HTMLElement {
   #props = {};
 
+  #isRendered = false;
+
   #state = {};
 
   set props(newProps) {
     this.#props = { ...this.#props, ...newProps };
-    this.update();
+
+    if (this.#isRendered) { this.update(); }
   }
 
   get props() {
@@ -14,7 +17,8 @@ export default class Component extends HTMLElement {
 
   set state(newState) {
     this.#state = { ...this.#state, ...newState };
-    this.update();
+
+    if (this.#isRendered) { this.update(); }
   }
 
   get state() {
@@ -50,18 +54,23 @@ export default class Component extends HTMLElement {
   }
 
   async attributeChangedCallback() {
-    await this.render();
+    await this.update();
   }
 
   async connectedCallback() {
     await this.render();
+    this.#isRendered = true;
+    await this.afterRender();
   }
 
-  async update() {
-    await this.render();
+  get isRendered() {
+    return this.#isRendered;
   }
 
   static register(elementName, elementClass) {
     customElements.define(elementName, elementClass);
   }
 }
+
+Component.prototype.afterRender = async () => { };
+Component.prototype.update = async () => { };

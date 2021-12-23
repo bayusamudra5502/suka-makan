@@ -1,8 +1,6 @@
 import Component from '../../lib/Component';
 
 export default class PictureResponsiveComponent extends Component {
-  #rendered = false;
-
   constructor(isLazyLoading = true) {
     super();
     this.state = {
@@ -18,19 +16,18 @@ export default class PictureResponsiveComponent extends Component {
       breakpoints: [...this.state.breakpoints, { breakpoint, type, src }],
     };
 
-    this.update();
     return this;
   }
 
   setDefaultImage(src, alt = '') {
     this.state = { defaultImage: { src, alt } };
-    this.update();
+
     return this;
   }
 
   setAltImage(alt) {
     this.state = { alt };
-    this.update();
+
     return this;
   }
 
@@ -43,15 +40,13 @@ export default class PictureResponsiveComponent extends Component {
     this.innerHTML = `
       <picture></picture>
     `;
-
-    this.#rendered = true;
   }
 
-  update() {
-    if (!this.#rendered) {
-      return;
-    }
+  async afterRender() {
+    await this.update();
+  }
 
+  async update() {
     const picture = this.querySelector('picture');
     picture.innerHTML = '';
 

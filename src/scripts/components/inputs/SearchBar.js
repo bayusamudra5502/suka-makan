@@ -28,11 +28,9 @@ export default class SearchBar extends Component {
         </form>
       </section>
     `;
-
-    this.#applyhandler();
   }
 
-  #applyhandler() {
+  async afterRender() {
     this.querySelector('form').onsubmit = (e) => {
       e.preventDefault();
       this.#submitHandler(e.target[0].value);

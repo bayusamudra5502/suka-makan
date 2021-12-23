@@ -11,14 +11,16 @@ export default class RestaurantListContainer extends Component {
   }
 
   async render() {
-    if (this.restaurantList === null) {
-      return;
-    }
-
     this.innerHTML = `
       <section class="result" id="result">
       </section>
     `;
+  }
+
+  async afterRender() {
+    if (this.restaurantList === null) {
+      return;
+    }
 
     const container = this.querySelector('.result');
 

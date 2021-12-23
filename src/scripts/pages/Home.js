@@ -13,16 +13,14 @@ export default class HomePage extends Component {
       <h2>Daftar Restoran</h2>
       <section class="restaurants"></section>
     `;
+  }
 
-    this.update();
+  async afterRender() {
+    await this.update();
   }
 
   async update() {
     const container = this.querySelector('.restaurants');
-
-    if (container === null) {
-      return;
-    }
 
     container.innerHTML = '';
     container.appendChild(new LoadingComponent());

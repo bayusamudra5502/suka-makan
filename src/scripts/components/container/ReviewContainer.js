@@ -6,6 +6,10 @@ export default class ReviewContainer extends Component {
     this.className = 'review-container';
   }
 
+  async afterRender() {
+    await this.update();
+  }
+
   async update() {
     this.innerHTML = '';
     this.props.data.forEach((review) => {

@@ -26,20 +26,38 @@ class FavoriteModel {
   }
 
   async getFavorites() {
-    return (await this.#db).getAll(FAVORITE_OBJ_STORE);
+    try {
+      return (await this.#db).getAll(FAVORITE_OBJ_STORE);
+    } catch (err) {
+      return [];
+    }
   }
 
   async addFavorite(restaurantObject) {
-    return (await this.#db).put(FAVORITE_OBJ_STORE, restaurantObject);
+    try {
+      (await this.#db).put(FAVORITE_OBJ_STORE, restaurantObject);
+      return true;
+    } catch {
+      return false;
+    }
   }
 
   async deleteFavorite(restoId) {
-    return (await this.#db).delete(FAVORITE_OBJ_STORE, restoId);
+    try {
+      (await this.#db).delete(FAVORITE_OBJ_STORE, restoId);
+      return true;
+    } catch {
+      return false;
+    }
   }
 
   async isFavorite(restaurantId) {
-    const db = await this.#db;
-    return !!(await db.get(FAVORITE_OBJ_STORE, restaurantId));
+    try {
+      const db = await this.#db;
+      return !!(await db.get(FAVORITE_OBJ_STORE, restaurantId));
+    } catch {
+      return false;
+    }
   }
 }
 

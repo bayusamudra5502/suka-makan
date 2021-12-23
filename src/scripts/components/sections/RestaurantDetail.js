@@ -5,9 +5,7 @@ import '../container/ReviewContainer';
 import '../templates/PictureResponsive';
 
 export default class RestaurantDetailDescription extends Component {
-  #rendered = false;
-
-  render() {
+  async render() {
     this.innerHTML = `
       <section class="detail">
         <section class="description">
@@ -55,16 +53,9 @@ export default class RestaurantDetailDescription extends Component {
         </section>
       </section>
     `;
-
-    this.#rendered = true;
-    this.update();
   }
 
-  update() {
-    if (!this.#rendered) {
-      return;
-    }
-
+  async afterRender() {
     this.setElementValue('.description p', this.props.description);
     this.setElementValue(
       '.address p',

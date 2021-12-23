@@ -17,7 +17,9 @@ export default class RouterComponent extends Component {
     this.innerHTML = `
       <main id="content"></main>
     `;
+  }
 
+  async afterRender() {
     await this.update();
   }
 

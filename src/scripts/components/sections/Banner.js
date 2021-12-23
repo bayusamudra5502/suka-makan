@@ -14,11 +14,13 @@ export default class BannerComponent extends Component {
     <banner-hero></banner-hero>
     <div class="favorite-container">
       <button class="favorite-btn" title="Tambahkan ke daftar favorit">
-        <img src="${imgUnloved}" alt=""> 
+        <img src="" alt=""> 
       </button>
     </div>
     `;
+  }
 
+  async afterRender() {
     this.querySelector('button').onclick = this.onfavoritetoggle;
 
     const bannerImage = this.querySelector('.banner');

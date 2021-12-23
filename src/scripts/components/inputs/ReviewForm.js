@@ -29,10 +29,6 @@ export default class ReviewForm extends Component {
   async update() {
     const submitButton = this.querySelector('form button');
 
-    if (submitButton === null) {
-      return;
-    }
-
     if (this.state.isLoading) {
       submitButton.setAttribute('disabled', 'disabled');
       submitButton.innerHTML = 'Loading...';
