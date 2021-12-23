@@ -1,54 +1,9 @@
 const { merge } = require('webpack-merge');
-const MiniCSSExtractPlugin = require('mini-css-extract-plugin');
-const common = require('./webpack.common');
-const WorkboxPlugin = require("workbox-webpack-plugin");
-const ImageMinimizerPlugin = require("image-minimizer-webpack-plugin");
+const ci = require('./webpack.prod.ci');
+const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 
-module.exports = merge(common, {
-  mode: 'production',
+module.exports = merge(ci, {
   plugins: [
-    new ImageMinimizerPlugin({
-      minimizer: {
-        implementation: ImageMinimizerPlugin.imageminMinify,
-        options: {
-          plugins: [
-            ["mozjpeg", { progressive: true, quality: 80 }]
-          ]
-        }
-      }
-    }),
-    new MiniCSSExtractPlugin({
-      filename: 'static/css/[name].[fullhash].css',
-    }),
-    new WorkboxPlugin.InjectManifest({
-      swSrc: "./src/scripts/sw.js",
-      swDest: "service-worker.js"
-    })
+    new BundleAnalyzerPlugin()
   ],
-  output: {
-    clean: true,
-  },
-  module: {
-    rules: [
-      {
-        test: /\.scss$/,
-        use: [
-          { loader: MiniCSSExtractPlugin.loader },
-          { loader: 'css-loader' },
-          { loader: 'sass-loader' },
-        ],
-      },
-      {
-        test: /\.css$/,
-        use: [
-          {
-            loader: MiniCSSExtractPlugin.loader,
-          },
-          {
-            loader: 'css-loader',
-          },
-        ],
-      },
-    ],
-  },
 });
