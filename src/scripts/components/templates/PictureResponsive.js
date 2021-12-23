@@ -8,6 +8,7 @@ export default class PictureResponsiveComponent extends Component {
       breakpoints: [],
       isLazyLoading,
       imgClassName: '',
+      imageLoaded: () => { },
     };
   }
 
@@ -19,14 +20,14 @@ export default class PictureResponsiveComponent extends Component {
     return this;
   }
 
-  setDefaultImage(src, alt = '') {
-    this.state = { defaultImage: { src, alt } };
+  setDefaultImage(src) {
+    this.state = { defaultImage: { ...this.state.defaultImage, src } };
 
     return this;
   }
 
   setAltImage(alt) {
-    this.state = { alt };
+    this.state = { defaultImage: { ...this.state.defaultImage, alt } };
 
     return this;
   }
@@ -74,6 +75,11 @@ export default class PictureResponsiveComponent extends Component {
     } else {
       defaultImage.src = encodeURI(this.state.defaultImage.src);
     }
+
+    defaultImage.addEventListener('lazyloaded', () => {
+      this.dispatchEvent(new Event('loaded'));
+    });
+
     picture.append(defaultImage);
   }
 }

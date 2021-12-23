@@ -1,5 +1,5 @@
 main {
-  & > *{
+  & > * {
     width: 100%;
   }
 
@@ -12,7 +12,7 @@ main {
   padding: 10px;
 }
 
-resto-list{
+resto-list {
   display: flex;
   align-items: center;
   justify-content: center;

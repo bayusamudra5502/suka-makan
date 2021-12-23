@@ -4,7 +4,7 @@
   justify-content: center;
   width: 100%;
   overflow: hidden;
-  max-height: 250px;
+  height: 200px;
   position: relative;
   margin-bottom: 32px;
 
@@ -44,7 +44,7 @@
   }
 
   @media screen and (min-width: 700px) {
-    max-height: 350px;
+    height: 350px;
 
     .message {
       font-size: 1.3rem;
@@ -54,7 +54,7 @@
 
 .banner {
   @extend .hero;
-  max-height: 180px;
+  height: 180px;
 
   .pin {
     height: 1em;
@@ -72,7 +72,7 @@
   }
 
   @media screen and (min-width: 700px) {
-    max-height: 220px;
+    height: 220px;
   }
 }
 

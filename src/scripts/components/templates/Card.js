@@ -6,7 +6,10 @@ import Component from '../../lib/Component';
 import LinkComponent from './Link';
 import FavoriteModel from '../../api/FavoriteModel';
 import Toast from '../../lib/Toast';
+
 import './PictureResponsive';
+import '../skeleton/SkeletonBoxTemplate';
+import '../skeleton/Skeleton';
 
 const MAX_CHAR = 300;
 
@@ -39,15 +42,19 @@ export default class RestaurantCard extends Component {
 
   render() {
     this.innerHTML = `
-    <div class="card">
-        <picture-responsive class="banner-card"></picture-responsive>
+      <div class="card">
+        <skeleton-container class="banner-card-container">
+          <picture-responsive class="banner-card"></picture-responsive>
+          <div slot="skeleton" class="skeleton">
+            <div class="template cover"></div>
+          </div>
+        </skeleton-container>
         <div class="content">
             <h3></h3>         
             <button class="bookmark" title="Tambahkan Favorit">
                 <img src="${unlovedImage}" alt="">
             </button>
       
-
             <!-- Lokasi -->
             <img src="${pinImage}" alt="Lokasi Restoran">
             <p class="resto-location"></p>
@@ -58,7 +65,7 @@ export default class RestaurantCard extends Component {
 
             <p class="description"></p>
         </div>
-    </div>
+      </div>
     `;
   }
 
@@ -90,6 +97,11 @@ export default class RestaurantCard extends Component {
 
     const cardPicture = this.querySelector('.banner-card');
     cardPicture.setDefaultImage(this.data.image.sm);
+    cardPicture.setAltImage(`Restoran ${this.data.name}`);
+    cardPicture.addEventListener('loaded', () => {
+      const skeleton = this.querySelector('.banner-card-container');
+      skeleton.props = { loading: false };
+    });
 
     this.update();
   }
