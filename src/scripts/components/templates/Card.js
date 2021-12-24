@@ -5,19 +5,20 @@ import starImage from '@img/assets/star.png';
 import Component from '../../lib/Component';
 import LinkComponent from './Link';
 import FavoriteModel from '../../api/FavoriteModel';
-import Toast from '../../lib/Toast';
 
+import '../inputs/FavoriteButton';
 import './PictureResponsive';
-import '../skeleton/SkeletonBoxTemplate';
-import '../skeleton/Skeleton';
 
 const MAX_CHAR = 300;
 
 export default class RestaurantCard extends Component {
-  constructor() {
+  #favoriteModel;
+
+  constructor(favoriteModel = FavoriteModel) {
     super();
 
     this.state = { isFavorite: false };
+    this.#favoriteModel = favoriteModel;
   }
 
   set data(newData) {
@@ -28,32 +29,19 @@ export default class RestaurantCard extends Component {
     return this.state?.data ?? null;
   }
 
-  async #toggleFavorite() {
-    if (this.state.isFavorite) {
-      await FavoriteModel.deleteFavorite(this.data.id);
-      Toast.showSuccess('Berhasil menghapus dari daftar favorit');
-    } else {
-      await FavoriteModel.addFavorite(this.data);
-      Toast.showSuccess('Berhasil menambahkan ke daftar favorit');
-    }
-
-    this.state = { isFavorite: await FavoriteModel.isFavorite(this.data.id) };
-  }
-
   render() {
     this.innerHTML = `
       <div class="card">
-        <skeleton-container class="banner-card-container">
+        <div class="banner-card-container">
           <picture-responsive class="banner-card"></picture-responsive>
-          <div slot="skeleton" class="skeleton">
-            <div class="template cover"></div>
-          </div>
-        </skeleton-container>
+        </div>
         <div class="content">
             <h3></h3>         
-            <button class="bookmark" title="Tambahkan Favorit">
-                <img src="${unlovedImage}" alt="">
-            </button>
+            <favorite-button 
+              data-img-fav="${lovedImage}" 
+              data-img-notfav="${unlovedImage}"
+              data-btn-class="bookmark">
+            </favorite-button>
       
             <!-- Lokasi -->
             <img src="${pinImage}" alt="Lokasi Restoran">
@@ -70,6 +58,9 @@ export default class RestaurantCard extends Component {
   }
 
   async afterRender() {
+    const favoriteButton = this.querySelector('favorite-button');
+    favoriteButton.data = this.data;
+
     const linkComponent = (new LinkComponent());
     linkComponent.className = 'btn-detail';
     linkComponent.dataStyle = 'btn';
@@ -78,13 +69,9 @@ export default class RestaurantCard extends Component {
 
     this.querySelector('.content').appendChild(linkComponent);
 
-    const isFavorite = await FavoriteModel.isFavorite(this.data.id);
+    const isFavorite = await this.#favoriteModel.isFavorite(this.data.id);
     this.state = { isFavorite };
-    await this.update();
-
-    this.querySelector('.bookmark').onclick = () => {
-      this.#toggleFavorite();
-    };
+    this.update();
 
     const message = this.data.description.length > MAX_CHAR
       ? `${this.data.description.slice(0, MAX_CHAR - 3)}...`
@@ -107,16 +94,8 @@ export default class RestaurantCard extends Component {
   }
 
   update() {
-    const buttonBookmark = this.querySelector('.bookmark');
-    const imgBookmark = this.querySelector('.bookmark img');
-
-    if (this.state.isFavorite) {
-      buttonBookmark.setAttribute('title', 'Hapus favorit');
-      imgBookmark.setAttribute('src', lovedImage);
-    } else {
-      buttonBookmark.setAttribute('title', 'Tambahkan favorit');
-      imgBookmark.setAttribute('src', unlovedImage);
-    }
+    const favoriteButton = this.querySelector('favorite-button');
+    favoriteButton.isFavorite = this.state.isFavorite;
   }
 }
 

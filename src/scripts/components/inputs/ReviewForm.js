@@ -3,9 +3,12 @@ import Component from '../../lib/Component';
 import Toast from '../../lib/Toast';
 
 export default class ReviewForm extends Component {
-  constructor() {
+  #restaurantModel;
+
+  constructor(restaurantModel = RestaurantModel) {
     super();
     this.onaddeddocument = () => { };
+    this.#restaurantModel = restaurantModel;
   }
 
   render() {
@@ -47,7 +50,8 @@ export default class ReviewForm extends Component {
     this.state = { isLoading: true };
 
     try {
-      const result = await RestaurantModel.postReview(payload.id, payload.name, payload.review);
+      const result = await this.#restaurantModel
+        .postReview(payload.id, payload.name, payload.review);
 
       if (!result.error) {
         Toast.showSuccess('Berhasil menambahkan komentar');

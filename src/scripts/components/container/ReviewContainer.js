@@ -12,7 +12,7 @@ export default class ReviewContainer extends Component {
 
   update() {
     this.innerHTML = '';
-    this.props.data.forEach((review) => {
+    this.props.data?.forEach((review) => {
       const newReview = new ReviewItem();
       newReview.props = review;
 

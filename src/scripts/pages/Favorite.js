@@ -5,6 +5,13 @@ import RestaurantListContainer from '../components/sections/RestaurantListContai
 import Component from '../lib/Component';
 
 export default class FavoritePage extends Component {
+  #favoriteModel;
+
+  constructor(favoriteModel = FavoriteModel) {
+    super();
+    this.#favoriteModel = favoriteModel;
+  }
+
   async render() {
     document.title = 'Favorit - Suka Makan';
 
@@ -19,7 +26,11 @@ export default class FavoritePage extends Component {
   }
 
   async #fetchData() {
-    this.state.favorites = await FavoriteModel.getFavorites();
+    this.state.favorites = await this.#favoriteModel.getFavorites();
+  }
+
+  afterRender() {
+    this.update();
   }
 
   update() {

@@ -9,7 +9,6 @@
 @import "detail.scss";
 @import "toast.scss";
 @import "review.scss";
-@import "skeleton.scss";
 
 /* Variables */
 $font-family: Cabin, sans-serif;
@@ -94,4 +93,8 @@ input {
 
 h2 {
   text-align: center;
+}
+
+.loading {
+  background-color: #ced4da;
 }

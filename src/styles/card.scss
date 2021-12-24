@@ -1,7 +1,6 @@
 .card {
   background-color: #fff;
   overflow: hidden;
-  max-width: 350px;
   margin: 0 auto;
 
   .banner-card-container {
@@ -16,7 +15,7 @@
     width: 100%;
 
     img {
-      height: 100%;
+      width: 100%;
     }
   }
 

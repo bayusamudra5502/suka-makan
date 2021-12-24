@@ -5,7 +5,7 @@ export default class HeroBaseComponent extends Component {
   render() {
     this.innerHTML = `
       <div class="message"></div>
-      <picture-responsive></picture-responsive>
+        <picture-responsive></picture-responsive>
       <div class="overlay"></div>
     `;
   }
@@ -16,10 +16,6 @@ export default class HeroBaseComponent extends Component {
 
   update() {
     const message = this.querySelector('.message');
-
-    if (!message || !this.props) {
-      return;
-    }
 
     const picture = this.querySelector('picture-responsive');
     picture.addBreakpoint('400px', 'image/jpeg', this.props.src.sm);

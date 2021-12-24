@@ -4,8 +4,8 @@ import HeroBaseComponent from '../base/HeroBase';
 
 export default class BannerHero extends HeroBaseComponent {
   render() {
-    super.render();
     this.className = 'banner';
+
     this.props = {
       message: `
       <p class="jumbo resto-name"></p>
@@ -15,6 +15,10 @@ export default class BannerHero extends HeroBaseComponent {
       </div>
     `,
     };
+  }
+
+  afterRender() {
+    super.render();
   }
 }
 
