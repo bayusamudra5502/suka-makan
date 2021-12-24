@@ -6,6 +6,13 @@ import OfflineMessage from '../components/feedback/OfflineMessage';
 import '../components/hero/Hero';
 
 export default class HomePage extends Component {
+  #restaurantModel;
+
+  constructor(restaurantModel = RestoAPI) {
+    super();
+    this.#restaurantModel = restaurantModel;
+  }
+
   render() {
     document.title = 'Halaman Utama - Suka Makan';
     this.innerHTML = `
@@ -26,7 +33,7 @@ export default class HomePage extends Component {
     container.appendChild(new LoadingComponent());
 
     try {
-      const data = await RestoAPI.getRestaurants();
+      const data = this.#restaurantModel.getRestaurants();
       container.innerHTML = '';
 
       const restaurantList = new RestaurantListContainer();

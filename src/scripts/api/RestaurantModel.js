@@ -1,5 +1,5 @@
 import NotFoundError from './NotFoundError';
-import APISender from './APISender';
+import Sender from './APISender';
 import config from '@/config.json';
 
 const { endpoint: ENDPOINT_URL } = config;
@@ -20,19 +20,19 @@ class RestaurantModel {
     };
   }
 
-  static async getRestaurants() {
+  static async getRestaurants(APISender = Sender) {
     const restaurantList = await APISender.get(`${ENDPOINT_URL}/list`);
 
     return restaurantList.restaurants.map((data) => this.#formatRestaurantObj(data));
   }
 
-  static async searchRestaurant(query) {
+  static async searchRestaurant(query, APISender = Sender) {
     const restaurantList = await APISender.get(`${ENDPOINT_URL}/search`, { q: query });
 
     return restaurantList.restaurants.map((data) => this.#formatRestaurantObj(data));
   }
 
-  static async getRestaurantDetail(restoId) {
+  static async getRestaurantDetail(restoId, APISender = Sender) {
     const restaurantDetail = (await APISender.get(`${ENDPOINT_URL}/detail/${restoId}`));
 
     if (restaurantDetail.error) {
@@ -42,7 +42,7 @@ class RestaurantModel {
     return this.#formatRestaurantObj(restaurantDetail.restaurant);
   }
 
-  static async postReview(restoId, name, review) {
+  static async postReview(restoId, name, review, APISender = Sender) {
     const payload = {
       id: restoId,
       name,
