@@ -94,6 +94,11 @@ module.exports = function builder(config) {
       // webpack-dev-middleware configuration
       // i. e.
       stats: 'errors-only',
+
+      watchOptions: {
+        ignored: [/\/\./, 'node_modules'],
+      },
+
     },
   });
 };

@@ -3,7 +3,12 @@ export default class Toast {
 
   static register(toastContainer) {
     if (this.toastObject !== null) {
-      document.body.removeChild(this.toastObject);
+      try {
+        document.body.removeChild(this.toastObject);
+        this.toastObject = null;
+      } catch {
+        this.toastObject = null;
+      }
     }
 
     this.toastObject = toastContainer;
