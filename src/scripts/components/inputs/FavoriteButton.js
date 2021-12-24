@@ -71,7 +71,11 @@ export default class FavoriteButton extends Component {
 
   afterRender() {
     const buttonBookmark = this.querySelector('button');
-    buttonBookmark.classList.add(this.buttonClass.split(' '));
+    const newClass = this.buttonClass?.split(' ');
+
+    if (newClass) {
+      buttonBookmark.classList.add(newClass);
+    }
 
     buttonBookmark.onclick = () => {
       this.#toggleFavorite();

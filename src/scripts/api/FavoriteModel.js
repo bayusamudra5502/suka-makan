@@ -59,6 +59,16 @@ class FavoriteModel {
       return false;
     }
   }
+
+  async clearFavorite() {
+    try {
+      const db = await this.#db;
+      db.clear(FAVORITE_OBJ_STORE);
+      return true;
+    } catch {
+      return false;
+    }
+  }
 }
 
 export default (new FavoriteModel());

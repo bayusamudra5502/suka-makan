@@ -23,6 +23,17 @@
         "webpack:///./~/*": "${workspaceFolder}/node_modules/*",
         "webpack://?:*/*": "${workspaceFolder}/*"
       }
+    },
+    {
+      "type": "pwa-chrome",
+      "request": "attach",
+      "name": "Karma Runner Debug",
+      "address": "localhost",
+      "port": 9333,
+      "pathMapping": {
+        "/": "${workspaceRoot}/",
+        "/base/": "${workspaceRoot}/"
+      }
     }
   ]
 }
