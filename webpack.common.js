@@ -1,8 +1,11 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const ESLintWebpackPlugin = require('eslint-webpack-plugin');
+const ImageminWebpWebpackPlugin = require("imagemin-webp-webpack-plugin");
 
 const path = require('path');
+
+const QUALITY = 60;
 
 module.exports = {
   entry: path.resolve(__dirname, 'src/scripts/index.js'),
@@ -45,6 +48,15 @@ module.exports = {
       ],
     }),
     new ESLintWebpackPlugin(),
+    new ImageminWebpWebpackPlugin({
+      overrideExtension: false,
+      config: [{
+        test: /\.(jpe?g)/,
+        options: {
+          quality: QUALITY
+        }
+      }],
+    })
   ],
   resolve: {
     alias: {

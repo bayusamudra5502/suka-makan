@@ -12,7 +12,11 @@ export default class PictureResponsiveComponent extends Component {
     };
   }
 
-  addBreakpoint(breakpoint, type, src) {
+  addBreakpoint(breakpoint, type, src, includeWebp = false) {
+    if (includeWebp) {
+      this.addBreakpoint(breakpoint, 'image/webp', `${src}.webp`);
+    }
+
     this.state = {
       breakpoints: [...this.state.breakpoints, { breakpoint, type, src }],
     };
@@ -20,8 +24,8 @@ export default class PictureResponsiveComponent extends Component {
     return this;
   }
 
-  setDefaultImage(src) {
-    this.state = { defaultImage: { ...this.state.defaultImage, src } };
+  setDefaultImage(src, includeWebp = false) {
+    this.state = { defaultImage: { ...this.state.defaultImage, src, includeWebp } };
 
     return this;
   }
@@ -51,9 +55,25 @@ export default class PictureResponsiveComponent extends Component {
     const picture = this.querySelector('picture');
     picture.innerHTML = '';
 
-    this.state.breakpoints.forEach(({ breakpoint, type, src }) => {
+    const imageBreakpoints = this.state.breakpoints;
+
+    if (this.state.defaultImage.includeWebp) {
+      imageBreakpoints.push({
+        type: 'image/webp',
+        src: `${this.state.defaultImage.src}.webp`,
+        isDefault: true,
+      });
+    }
+
+    imageBreakpoints.forEach(({
+      breakpoint, type, src, isDefault = false,
+    }) => {
       const sourceElement = document.createElement('source');
-      sourceElement.media = `(max-width: ${breakpoint})`;
+
+      if (!isDefault) {
+        sourceElement.media = `(max-width: ${breakpoint})`;
+      }
+
       sourceElement.type = type;
 
       if (this.state.isLazyLoading) {

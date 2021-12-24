@@ -5,6 +5,9 @@ const WorkboxPlugin = require("workbox-webpack-plugin");
 const ImageMinimizerPlugin = require("image-minimizer-webpack-plugin");
 const CssMinimizerPlugin = require("css-minimizer-webpack-plugin");
 const TerserPlugin = require("terser-webpack-plugin");
+const ImageminWebpWebpackPlugin = require("imagemin-webp-webpack-plugin");
+
+const QUALITY = 60;
 
 module.exports = merge(common, {
   mode: 'production',
@@ -14,7 +17,7 @@ module.exports = merge(common, {
         implementation: ImageMinimizerPlugin.imageminMinify,
         options: {
           plugins: [
-            ["mozjpeg", { progressive: true, quality: 80 }]
+            ["mozjpeg", { progressive: true, quality: QUALITY }]
           ]
         }
       }
@@ -25,7 +28,7 @@ module.exports = merge(common, {
     new WorkboxPlugin.InjectManifest({
       swSrc: "./src/scripts/sw.js",
       swDest: "service-worker.js"
-    }),
+    })
   ],
   output: {
     filename: "static/js/[name].[fullhash].js",

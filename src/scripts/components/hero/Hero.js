@@ -15,6 +15,7 @@ export default class HeroElement extends HeroBaseComponent {
     `,
       src: { lg: heroImage, md: heroImageMd, sm: heroImageSm },
       alt: '',
+      useWebp: true,
     };
   }
 }
