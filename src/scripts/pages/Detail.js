@@ -9,22 +9,21 @@ import RestaurantDetailDescription from '../components/sections/RestaurantDetail
 import Component from '../lib/Component';
 
 export default class RestaurantDetailPage extends Component {
-  #restaurantModel;
-
-  #favoriteModel;
-
   constructor(restaurantModel = RestaurantModel, favoriteModel = FavoriteModel) {
     super();
-    this.#restaurantModel = restaurantModel;
-    this.#favoriteModel = favoriteModel;
+
+    this.refs = {
+      restaurantModel,
+      favoriteModel,
+    };
   }
 
   async #fetchData() {
     try {
       this.state = { isLoading: true };
-      const data = await this.#restaurantModel.getRestaurantDetail(this.props.id);
+      const data = await this.refs.restaurantModel.getRestaurantDetail(this.props.id);
       this.state = data;
-      this.state = { isFavorite: await this.#favoriteModel.isFavorite(this.props.id) };
+      this.state = { isFavorite: await this.refs.favoriteModel.isFavorite(this.props.id) };
       this.state = { isLoading: false, isLoaded: true };
     } catch (err) {
       if (err instanceof NotFoundError) {

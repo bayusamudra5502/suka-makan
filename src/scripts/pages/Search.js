@@ -8,13 +8,11 @@ import SearchMessage from '../components/feedback/SearchMessage';
 import Component from '../lib/Component';
 
 export default class SearchPage extends Component {
-  #restaurantModel;
-
   constructor(restaurantModel = RestaurantModel) {
     super();
 
     this.state = { keyword: '', isLoading: false };
-    this.#restaurantModel = restaurantModel;
+    this.refs = { restaurantModel };
   }
 
   render() {
@@ -45,7 +43,9 @@ export default class SearchPage extends Component {
     try {
       this.state = { isLoading: true };
 
-      const searchResult = this.state.keyword !== '' ? await this.#restaurantModel.searchRestaurant(this.state.keyword) : [];
+      const searchResult = this.state.keyword !== ''
+        ? await this.refs.restaurantModel.searchRestaurant(this.state.keyword)
+        : [];
 
       this.state = { isLoading: false };
 

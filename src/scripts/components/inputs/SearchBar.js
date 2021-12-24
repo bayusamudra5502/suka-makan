@@ -2,19 +2,17 @@ import searchIcon from '@img/assets/search.svg';
 import Component from '../../lib/Component';
 
 export default class SearchBar extends Component {
-  #submitHandler;
-
   constructor() {
     super();
-    this.#submitHandler = () => { };
+    this.refs = { submitHandler: () => { } };
   }
 
   set onsearch(handler) {
-    this.#submitHandler = handler;
+    this.refs = { submitHandler: handler };
   }
 
   get onsearch() {
-    return this.#submitHandler;
+    return this.refs.submitHandler;
   }
 
   render() {
@@ -33,7 +31,7 @@ export default class SearchBar extends Component {
   afterRender() {
     this.querySelector('form').onsubmit = (e) => {
       e.preventDefault();
-      this.#submitHandler(e.target[0].value);
+      this.refs.submitHandler(e.target[0].value);
     };
   }
 }

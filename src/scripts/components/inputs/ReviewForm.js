@@ -3,12 +3,10 @@ import Component from '../../lib/Component';
 import Toast from '../../lib/Toast';
 
 export default class ReviewForm extends Component {
-  #restaurantModel;
-
   constructor(restaurantModel = RestaurantModel) {
     super();
     this.onaddeddocument = () => { };
-    this.#restaurantModel = restaurantModel;
+    this.refs = { restaurantModel };
   }
 
   render() {
@@ -50,7 +48,7 @@ export default class ReviewForm extends Component {
     this.state = { isLoading: true };
 
     try {
-      const result = await this.#restaurantModel
+      const result = await this.refs.restaurantModel
         .postReview(payload.id, payload.name, payload.review);
 
       if (!result.error) {

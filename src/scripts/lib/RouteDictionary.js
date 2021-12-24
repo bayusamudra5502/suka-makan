@@ -1,26 +1,26 @@
 export default class RouteDictionary {
-  #notFoundPage;
+  notFoundPage;
 
-  #routeDictionary = [];
+  routeDictionary = [];
 
   constructor() {
-    this.#notFoundPage = null;
+    this.notFoundPage = null;
   }
 
   setNotFound(component) {
-    this.#notFoundPage = component;
+    this.notFoundPage = component;
   }
 
   addRoute(routePath, constructor) {
-    this.#routeDictionary.push([routePath, constructor]);
+    this.routeDictionary.push([routePath, constructor]);
   }
 
   getRoute(hashPath) {
     const routeToken = (hashPath === '' || hashPath[0] !== '/'
       ? '/' : hashPath).slice(1).split('/');
-    const notFound = this.#notFoundPage;
+    const notFound = this.notFoundPage;
 
-    return this.#routeDictionary.reduce((lastResult, currentPath) => {
+    return this.routeDictionary.reduce((lastResult, currentPath) => {
       const currentToken = currentPath[0].slice(1).split('/');
 
       if (routeToken.length > currentToken.length) {

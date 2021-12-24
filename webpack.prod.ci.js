@@ -5,7 +5,6 @@ const WorkboxPlugin = require("workbox-webpack-plugin");
 const ImageMinimizerPlugin = require("image-minimizer-webpack-plugin");
 const CssMinimizerPlugin = require("css-minimizer-webpack-plugin");
 const TerserPlugin = require("terser-webpack-plugin");
-const ImageminWebpWebpackPlugin = require("imagemin-webp-webpack-plugin");
 
 const QUALITY = 60;
 

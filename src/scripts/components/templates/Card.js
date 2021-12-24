@@ -12,13 +12,11 @@ import './PictureResponsive';
 const MAX_CHAR = 300;
 
 export default class RestaurantCard extends Component {
-  #favoriteModel;
-
   constructor(favoriteModel = FavoriteModel) {
     super();
 
     this.state = { isFavorite: false };
-    this.#favoriteModel = favoriteModel;
+    this.refs = { favoriteModel };
   }
 
   set data(newData) {
@@ -69,7 +67,7 @@ export default class RestaurantCard extends Component {
 
     this.querySelector('.content').appendChild(linkComponent);
 
-    const isFavorite = await this.#favoriteModel.isFavorite(this.data.id);
+    const isFavorite = await this.refs.favoriteModel.isFavorite(this.data.id);
     this.state = { isFavorite };
     this.update();
 

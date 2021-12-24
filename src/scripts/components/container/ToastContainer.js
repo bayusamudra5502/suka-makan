@@ -1,18 +1,17 @@
 import Component from '../../lib/Component';
+import ToastUtil from '../../lib/util/Toast';
 
 export default class ToastContainer extends Component {
-  #toastConstructor;
-
   constructor(toastConstructor) {
     super();
-    this.#toastConstructor = toastConstructor;
+    this.refs = { toastConstructor };
   }
 
   render() {
     this.className = 'toast-container';
   }
 
-  #showToast(object, delay) {
+  showToast(object, delay) {
     const toastObject = object;
 
     this.appendChild(toastObject);
@@ -31,23 +30,27 @@ export default class ToastContainer extends Component {
   }
 
   addSuccessToast(message, delay = 2000) {
-    const newToast = new this.#toastConstructor();
-    newToast.setAsSuccess();
-    newToast.setMessage(message);
+    const newToast = ToastUtil.toastBuilder({
+      ToastConstructor: this.refs.toastConstructor,
+      message,
+      type: 'success',
+    });
 
     this.addCustomToast(newToast, delay);
   }
 
   addErrorToast(message, delay = 2000) {
-    const newToast = new this.#toastConstructor();
-    newToast.setAsError();
-    newToast.setMessage(message);
+    const newToast = ToastUtil.toastBuilder({
+      ToastConstructor: this.refs.toastConstructor,
+      message,
+      type: 'error',
+    });
 
     this.addCustomToast(newToast, delay);
   }
 
   addCustomToast(toastObject, delay = null) {
-    this.#showToast(toastObject, delay);
+    this.showToast(toastObject, delay);
   }
 }
 

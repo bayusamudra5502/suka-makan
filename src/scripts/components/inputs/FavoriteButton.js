@@ -3,16 +3,11 @@ import Component from '../../lib/Component';
 import Toast from '../../lib/Toast';
 
 export default class FavoriteButton extends Component {
-  #favoriteModel;
-
-  #toast;
-
   constructor(favoriteModel = FavoriteModel, toastModel = Toast) {
     super();
 
-    this.#favoriteModel = favoriteModel;
-    this.#toast = toastModel;
-    this.toast = Toast;
+    this.refs = { FavoriteModel: favoriteModel, ToastModel: toastModel };
+
     this.state = {
       isFavorite: false,
     };
@@ -56,12 +51,12 @@ export default class FavoriteButton extends Component {
 
   async #toggleFavorite() {
     if (this.isFavorite) {
-      await this.#favoriteModel.deleteFavorite(this.data.id);
-      this.#toast.showSuccess('Berhasil menghapus dari daftar favorit');
+      await this.refs.FavoriteModel.deleteFavorite(this.data.id);
+      this.refs.ToastModel.showSuccess('Berhasil menghapus dari daftar favorit');
       this.state = { isFavorite: false };
     } else {
-      await this.#favoriteModel.addFavorite(this.data);
-      this.#toast.showSuccess('Berhasil menambahkan ke daftar favorit');
+      await this.refs.FavoriteModel.addFavorite(this.data);
+      this.refs.ToastModel.showSuccess('Berhasil menambahkan ke daftar favorit');
       this.state = { isFavorite: true };
     }
   }
@@ -85,7 +80,7 @@ export default class FavoriteButton extends Component {
     this.update();
   }
 
-  #isSrcAvailable() {
+  isSrcAvailable() {
     return this.buttonFavoriteImage && this.buttonNotFavoriteImage;
   }
 
@@ -93,13 +88,13 @@ export default class FavoriteButton extends Component {
     const buttonBookmark = this.querySelector('button');
 
     if (this.state.isFavorite) {
-      if (this.#isSrcAvailable()) {
+      if (this.isSrcAvailable()) {
         this.setAttributeValueURI('img', 'src', this.buttonFavoriteImage);
       }
 
       buttonBookmark.setAttribute('title', 'Hapus favorit');
     } else {
-      if (this.#isSrcAvailable()) {
+      if (this.isSrcAvailable()) {
         this.setAttributeValueURI('img', 'src', this.buttonNotFavoriteImage);
       }
 

@@ -1,36 +1,36 @@
 export default class Toast {
-  static #toastObject = null;
+  static toastObject = null;
 
   static register(toastContainer) {
-    if (this.#toastObject !== null) {
-      document.body.removeChild(this.#toastObject);
+    if (this.toastObject !== null) {
+      document.body.removeChild(this.toastObject);
     }
 
-    this.#toastObject = toastContainer;
-    document.body.appendChild(this.#toastObject);
+    this.toastObject = toastContainer;
+    document.body.appendChild(this.toastObject);
   }
 
   static showSuccess(message, delay = 2000) {
-    if (!this.#toastObject) {
+    if (!this.toastObject) {
       throw new Error('Toast not yet registered');
     }
 
-    this.#toastObject.addSuccessToast(message, delay);
+    this.toastObject.addSuccessToast(message, delay);
   }
 
   static showError(message, delay) {
-    if (!this.#toastObject) {
+    if (!this.toastObject) {
       throw new Error('Toast not yet registered');
     }
 
-    this.#toastObject.addErrorToast(message, delay);
+    this.toastObject.addErrorToast(message, delay);
   }
 
   static showCustomToast(toastObject, delay = null) {
-    if (!this.#toastObject) {
+    if (!this.toastObject) {
       throw new Error('Toast not yet registered');
     }
 
-    this.#toastObject.addCustomToast(toastObject, delay);
+    this.toastObject.addCustomToast(toastObject, delay);
   }
 }

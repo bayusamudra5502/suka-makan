@@ -1,28 +1,41 @@
 export default class Component extends HTMLElement {
-  #props = {};
+  constructor() {
+    super();
 
-  #isRendered = false;
-
-  #state = {};
+    this.localData = {
+      props: {},
+      state: {},
+      refs: {},
+      isRendered: false,
+    };
+  }
 
   set props(newProps) {
-    this.#props = { ...this.#props, ...newProps };
+    this.localData.props = { ...this.localData.props, ...newProps };
 
-    if (this.#isRendered) { this.update(); }
+    if (this.isRendered) { this.update(); }
   }
 
   get props() {
-    return this.#props;
+    return this.localData.props;
   }
 
   set state(newState) {
-    this.#state = { ...this.#state, ...newState };
+    this.localData.state = { ...this.localData.state, ...newState };
 
-    if (this.#isRendered) { this.update(); }
+    if (this.isRendered) { this.update(); }
   }
 
   get state() {
-    return this.#state;
+    return this.localData.state;
+  }
+
+  set refs(newRefs) {
+    this.localData.refs = { ...this.localData.refs, ...newRefs };
+  }
+
+  get refs() {
+    return this.localData.refs;
   }
 
   setElementValue(selector, value) {
@@ -59,12 +72,12 @@ export default class Component extends HTMLElement {
 
   async connectedCallback() {
     await this.render();
-    this.#isRendered = true;
+    this.localData.isRendered = true;
     await this.afterRender();
   }
 
   get isRendered() {
-    return this.#isRendered;
+    return this.localData.isRendered;
   }
 
   static register(elementName, elementClass) {

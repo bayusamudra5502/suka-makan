@@ -6,7 +6,7 @@ import Component from '../../lib/Component';
 import '../templates/Link';
 
 export default class HeaderApp extends Component {
-  #openDrawer = () => {
+  openDrawer = () => {
     this.querySelector('.navigation').classList.remove('hidden');
 
     setTimeout(() => {
@@ -15,7 +15,7 @@ export default class HeaderApp extends Component {
     }, 0);
   };
 
-  #closeDrawer = () => {
+  closeDrawer = () => {
     document.querySelector('.box-overlay').classList.add('hide');
     this.querySelector('.navigation').classList.add('hide');
 
@@ -73,21 +73,21 @@ export default class HeaderApp extends Component {
   afterRender() {
     this
       .querySelector('.burger')
-      .addEventListener('click', this.#openDrawer);
+      .addEventListener('click', this.openDrawer);
 
     document
       .querySelector('.box-overlay')
-      .addEventListener('click', this.#closeDrawer);
+      .addEventListener('click', this.closeDrawer);
 
     this
       .querySelector('.close-button button')
-      .addEventListener('click', this.#closeDrawer);
+      .addEventListener('click', this.closeDrawer);
 
     this.querySelectorAll('li a').forEach((item) => {
-      item.addEventListener('click', this.#closeDrawer);
+      item.addEventListener('click', this.closeDrawer);
     });
 
-    this.querySelector('.skip a').removeEventListener('click', this.#closeDrawer);
+    this.querySelector('.skip a').removeEventListener('click', this.closeDrawer);
   }
 }
 

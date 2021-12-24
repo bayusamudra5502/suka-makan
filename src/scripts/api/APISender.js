@@ -1,16 +1,13 @@
-export default class APISender {
-  static #URLBuilder(baseURL, params) {
-    const paramsString = new URLSearchParams(params).toString();
-    return paramsString.length > 0 ? `${baseURL}?${paramsString}` : baseURL;
-  }
+import ApiUtil from '../lib/util/API';
 
+export default class APISender {
   static async get(URL, params = {}) {
-    const response = await fetch(this.#URLBuilder(URL, params));
+    const response = await fetch(ApiUtil.URLBuilder(URL, params));
     return response.json();
   }
 
   static async post(URL, data = {}, params = {}) {
-    const response = await fetch(this.#URLBuilder(URL, params), {
+    const response = await fetch(ApiUtil.URLBuilder(URL, params), {
       method: 'POST',
       body: JSON.stringify(data),
       headers: {

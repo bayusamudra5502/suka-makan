@@ -1,35 +1,21 @@
 import NotFoundError from './NotFoundError';
 import Sender from './APISender';
 import config from '@/config.json';
+import ApiUtil from '../lib/util/API';
 
 const { endpoint: ENDPOINT_URL } = config;
 
 class RestaurantModel {
-  static #imageBuilder(pictureId) {
-    return {
-      sm: `${ENDPOINT_URL}/images/small/${pictureId}`,
-      md: `${ENDPOINT_URL}/images/medium/${pictureId}`,
-      lg: `${ENDPOINT_URL}/images/large/${pictureId}`,
-    };
-  }
-
-  static #formatRestaurantObj({ pictureId, ...data }) {
-    return {
-      image: this.#imageBuilder(pictureId),
-      ...data,
-    };
-  }
-
   static async getRestaurants(APISender = Sender) {
     const restaurantList = await APISender.get(`${ENDPOINT_URL}/list`);
 
-    return restaurantList.restaurants.map((data) => this.#formatRestaurantObj(data));
+    return restaurantList.restaurants.map((data) => ApiUtil.restaurantObjFormatter(data));
   }
 
   static async searchRestaurant(query, APISender = Sender) {
     const restaurantList = await APISender.get(`${ENDPOINT_URL}/search`, { q: query });
 
-    return restaurantList.restaurants.map((data) => this.#formatRestaurantObj(data));
+    return restaurantList.restaurants.map((data) => ApiUtil.restaurantObjFormatter(data));
   }
 
   static async getRestaurantDetail(restoId, APISender = Sender) {
@@ -39,7 +25,7 @@ class RestaurantModel {
       throw new NotFoundError('Restaurant not found');
     }
 
-    return this.#formatRestaurantObj(restaurantDetail.restaurant);
+    return ApiUtil.restaurantObjFormatter(restaurantDetail.restaurant);
   }
 
   static async postReview(restoId, name, review, APISender = Sender) {

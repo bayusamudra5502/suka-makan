@@ -5,11 +5,9 @@ import RestaurantListContainer from '../components/sections/RestaurantListContai
 import Component from '../lib/Component';
 
 export default class FavoritePage extends Component {
-  #favoriteModel;
-
   constructor(favoriteModel = FavoriteModel) {
     super();
-    this.#favoriteModel = favoriteModel;
+    this.refs = { favoriteModel };
   }
 
   async render() {
@@ -26,7 +24,7 @@ export default class FavoritePage extends Component {
   }
 
   async #fetchData() {
-    this.state.favorites = await this.#favoriteModel.getFavorites();
+    this.state.favorites = await this.refs.favoriteModel.getFavorites();
   }
 
   afterRender() {

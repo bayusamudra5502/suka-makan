@@ -2,6 +2,12 @@ import Component from '../../lib/Component';
 import ReviewItem from '../templates/ReviewItem';
 
 export default class ReviewContainer extends Component {
+  constructor(reviewItem = ReviewItem) {
+    super();
+
+    this.refs = { ReviewItem: reviewItem };
+  }
+
   render() {
     this.className = 'review-container';
   }
@@ -13,7 +19,7 @@ export default class ReviewContainer extends Component {
   update() {
     this.innerHTML = '';
     this.props.data?.forEach((review) => {
-      const newReview = new ReviewItem();
+      const newReview = new this.refs.ReviewItem();
       newReview.props = review;
 
       this.append(newReview);
