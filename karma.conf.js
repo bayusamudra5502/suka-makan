@@ -95,10 +95,6 @@ module.exports = function builder(config) {
       // i. e.
       stats: 'errors-only',
 
-      watchOptions: {
-        ignored: [/\/\./, 'node_modules'],
-      },
-
     },
   });
 };

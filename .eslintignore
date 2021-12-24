@@ -3,3 +3,4 @@ node_modules/
 DevProfile/
 webpack.*
 sw.js
+*.conf.js
