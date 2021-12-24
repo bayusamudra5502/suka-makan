@@ -33,7 +33,7 @@ export default class HomePage extends Component {
     container.appendChild(new LoadingComponent());
 
     try {
-      const data = this.#restaurantModel.getRestaurants();
+      const data = await this.#restaurantModel.getRestaurants();
       container.innerHTML = '';
 
       const restaurantList = new RestaurantListContainer();
