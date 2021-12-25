@@ -15,7 +15,7 @@ Scenario('See search page with it\'s components', ({ I }) => {
   I.see('Untuk memulai pencarian');
 });
 
-Scenario('Searching restaurant but not any restaurant found', ({ I }) => {
+Scenario('Searching restaurants but not any restaurants found', ({ I }) => {
   I.seeElement('.search-bar input');
   I.seeElement('.search-bar button');
 
@@ -26,7 +26,7 @@ Scenario('Searching restaurant but not any restaurant found', ({ I }) => {
   I.see('Tidak ada hasil yang ditemukan');
 });
 
-Scenario('Searching restaurant with results', ({ I }) => {
+Scenario('Searching restaurants with results', ({ I }) => {
   I.seeElement('.search-bar input');
   I.seeElement('.search-bar button');
 
