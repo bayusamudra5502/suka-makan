@@ -41,12 +41,14 @@
     & > img + p {
       grid-column: 2 / -1;
       margin: 5px;
+      min-height: 1em;
     }
 
     .description {
       grid-column: 1/-1;
       text-align: justify;
       line-height: 1.4;
+      min-height: 90px;
     }
 
     .btn-detail {

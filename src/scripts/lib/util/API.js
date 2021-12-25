@@ -18,6 +18,10 @@ export default class ApiUtil {
     };
   }
 
+  static restaurantResponseFormatter(response) {
+    return response.restaurants.map((data) => ApiUtil.restaurantObjFormatter(data));
+  }
+
   static URLBuilder(baseURL, params) {
     const paramsString = new URLSearchParams(params).toString();
     return paramsString.length > 0 ? `${baseURL}?${paramsString}` : baseURL;

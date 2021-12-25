@@ -9,13 +9,15 @@ class RestaurantModel {
   static async getRestaurants(APISender = Sender) {
     const restaurantList = await APISender.get(`${ENDPOINT_URL}/list`);
 
-    return restaurantList.restaurants.map((data) => ApiUtil.restaurantObjFormatter(data));
+    return ApiUtil.restaurantResponseFormatter(restaurantList);
   }
 
   static async searchRestaurant(query, APISender = Sender) {
-    const restaurantList = await APISender.get(`${ENDPOINT_URL}/search`, { q: query });
+    const restaurantList = await APISender.get(`${ENDPOINT_URL}/search`, {
+      q: query,
+    });
 
-    return restaurantList.restaurants.map((data) => ApiUtil.restaurantObjFormatter(data));
+    return ApiUtil.restaurantResponseFormatter(restaurantList);
   }
 
   static async getRestaurantDetail(restoId, APISender = Sender) {
