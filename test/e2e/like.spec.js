@@ -1,4 +1,4 @@
-Feature('Liking and not liking movies');
+Feature('Make a restaurant favorite and not favorite');
 
 Before(({ I }) => {
   I.amOnPage('/');
@@ -14,7 +14,7 @@ Scenario('See card with like button', ({ I }) => {
   });
 });
 
-Scenario('Clicking movies', ({ I }) => {
+Scenario('Make restaurant Favorite', ({ I }) => {
   I.seeElement('favorite-button');
 
   I.seeAttributesOnElements('favorite-button button', {
@@ -41,7 +41,7 @@ Scenario('Clicking movies', ({ I }) => {
   clickNthLike(8);
 });
 
-Scenario('Cancling liking movies', ({ I }) => {
+Scenario('Make restaurant favorite and cancling it', ({ I }) => {
   I.seeElement('favorite-button');
 
   I.seeAttributesOnElements('favorite-button button', {

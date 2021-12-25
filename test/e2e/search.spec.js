@@ -1,4 +1,4 @@
-Feature('Search movies');
+Feature('Search Restaurant');
 
 Before(({ I }) => {
   I.amOnPage('/?/search');
@@ -15,7 +15,7 @@ Scenario('See search page with it\'s components', ({ I }) => {
   I.see('Untuk memulai pencarian');
 });
 
-Scenario('Searching movies but not any movies found', ({ I }) => {
+Scenario('Searching restaurant but not any restaurant found', ({ I }) => {
   I.seeElement('.search-bar input');
   I.seeElement('.search-bar button');
 
@@ -26,7 +26,7 @@ Scenario('Searching movies but not any movies found', ({ I }) => {
   I.see('Tidak ada hasil yang ditemukan');
 });
 
-Scenario('Searching movies with results', ({ I }) => {
+Scenario('Searching restaurant with results', ({ I }) => {
   I.seeElement('.search-bar input');
   I.seeElement('.search-bar button');
 

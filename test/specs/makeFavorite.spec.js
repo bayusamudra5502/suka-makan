@@ -16,7 +16,7 @@ const DUMMY_DATA = {
   rating: 10,
 };
 
-describe('Making a movie as a favorite', () => {
+describe('Making a restaurant as a favorite', () => {
   beforeEach(async () => {
     Toast.register(new ToastContainer(ToastComponent));
     const favoriteButton = new FavoriteButton(FavoriteModel);
@@ -37,7 +37,7 @@ describe('Making a movie as a favorite', () => {
     done();
   });
 
-  it('should be able to insert a movie to database', async () => {
+  it('should be able to insert a restaurant to database', async () => {
     spyOn(FavoriteModel, 'addFavorite').and.callThrough();
     spyOn(Toast, 'showSuccess').and.callThrough();
 
@@ -53,7 +53,7 @@ describe('Making a movie as a favorite', () => {
     expect(result[0]).toEqual(DUMMY_DATA);
   });
 
-  it('should able to replace new movie data when same id exist', async () => {
+  it('should able to replace new restaurant data when same id exist', async () => {
     FavoriteModel.addFavorite({
       id: 1,
       name: 'Same data',
@@ -74,7 +74,7 @@ describe('Making a movie as a favorite', () => {
     expect(result[0]).toEqual(DUMMY_DATA);
   });
 
-  it('should able to insert new movie when database not empty and id is not in database', async () => {
+  it('should able to insert new restaurant when database not empty and id is not in database', async () => {
     FavoriteModel.addFavorite({
       id: 0,
       name: 'Same data',
@@ -98,7 +98,7 @@ describe('Making a movie as a favorite', () => {
     expect(result[1]).toEqual(DUMMY_DATA);
   });
 
-  it('should able to insert new movie when same id in database not longer available', async () => {
+  it('should able to insert new restaurant when same id in database not longer available', async () => {
     await FavoriteModel.addFavorite({
       id: 1,
       name: 'Kumbang The Warrior',

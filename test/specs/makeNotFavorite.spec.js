@@ -16,7 +16,7 @@ const DUMMY_DATA = {
   rating: 10,
 };
 
-describe('Making a movie is not favorite', () => {
+describe('Making a restaurant is not favorite', () => {
   beforeEach(async () => {
     Toast.register(new ToastContainer(ToastComponent));
     const favoriteButton = new FavoriteButton(FavoriteModel);
@@ -37,7 +37,7 @@ describe('Making a movie is not favorite', () => {
     done();
   });
 
-  it('should able to remove the movie from favorite', async () => {
+  it('should able to remove the restaurant from favorite', async () => {
     await FavoriteModel.addFavorite(DUMMY_DATA);
     spyOn(Toast, 'showSuccess').and.callThrough();
     spyOn(FavoriteModel, 'addFavorite').and.callThrough();
@@ -63,7 +63,7 @@ describe('Making a movie is not favorite', () => {
     expect(result.length).toBe(0);
   });
 
-  it('should able to remove movie with identical id but data in the database and input different', async () => {
+  it('should able to remove restaurant with identical id but data in the database and input different', async () => {
     spyOn(Toast, 'showSuccess').and.callThrough();
 
     document.body.querySelector('favorite-button').data = {
